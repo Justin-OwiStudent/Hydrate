@@ -12,6 +12,12 @@
 		D07E93BC2A7B0C9100102BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D07E93BB2A7B0C9100102BF6 /* Assets.xcassets */; };
 		D07E93BF2A7B0C9100102BF6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D07E93BE2A7B0C9100102BF6 /* Preview Assets.xcassets */; };
 		D07E93C62A7B0CD100102BF6 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E93C52A7B0CD100102BF6 /* SplashScreenView.swift */; };
+		D08C18AA2A83A463004242A7 /* ManView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18A92A83A463004242A7 /* ManView.swift */; };
+		D08C18AC2A8413D0004242A7 /* StepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18AB2A8413D0004242A7 /* StepView.swift */; };
+		D08C18AE2A8417D7004242A7 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18AD2A8417D7004242A7 /* WaterView.swift */; };
+		D08C18B02A84DB94004242A7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */; };
+		D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18B12A84DCA9004242A7 /* OnboardView.swift */; };
+		D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18B32A84E733004242A7 /* AuthenticationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +27,12 @@
 		D07E93BB2A7B0C9100102BF6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D07E93BE2A7B0C9100102BF6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		D07E93C52A7B0CD100102BF6 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		D08C18A92A83A463004242A7 /* ManView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManView.swift; sourceTree = "<group>"; };
+		D08C18AB2A8413D0004242A7 /* StepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepView.swift; sourceTree = "<group>"; };
+		D08C18AD2A8417D7004242A7 /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
+		D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
+		D08C18B12A84DCA9004242A7 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
+		D08C18B32A84E733004242A7 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +49,11 @@
 		D07E93AB2A7B0C8B00102BF6 = {
 			isa = PBXGroup;
 			children = (
+				D08C18B32A84E733004242A7 /* AuthenticationView.swift */,
+				D08C18B12A84DCA9004242A7 /* OnboardView.swift */,
+				D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */,
+				D08C18AD2A8417D7004242A7 /* WaterView.swift */,
+				D08C18AB2A8413D0004242A7 /* StepView.swift */,
 				D07E93B62A7B0C8B00102BF6 /* Hydrate */,
 				D07E93B52A7B0C8B00102BF6 /* Products */,
 			);
@@ -57,6 +74,7 @@
 				D07E93B92A7B0C8B00102BF6 /* ContentView.swift */,
 				D07E93BB2A7B0C9100102BF6 /* Assets.xcassets */,
 				D07E93BD2A7B0C9100102BF6 /* Preview Content */,
+				D08C18A92A83A463004242A7 /* ManView.swift */,
 			);
 			path = Hydrate;
 			sourceTree = "<group>";
@@ -143,6 +161,12 @@
 				D07E93BA2A7B0C8B00102BF6 /* ContentView.swift in Sources */,
 				D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */,
 				D07E93C62A7B0CD100102BF6 /* SplashScreenView.swift in Sources */,
+				D08C18AC2A8413D0004242A7 /* StepView.swift in Sources */,
+				D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */,
+				D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */,
+				D08C18B02A84DB94004242A7 /* OnboardingModel.swift in Sources */,
+				D08C18AE2A8417D7004242A7 /* WaterView.swift in Sources */,
+				D08C18AA2A83A463004242A7 /* ManView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
