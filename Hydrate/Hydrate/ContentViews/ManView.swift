@@ -14,11 +14,12 @@ struct ManView: View {
         //        Color(UIColor.green)
         //            .ignoresSafeArea()
         
-        NavigationView{
+       
         
         ZStack {
             CustomColor.Background
                 .ignoresSafeArea()
+                .navigationBarBackButtonHidden(true)
             VStack {
                 Image("WhiteLogo")
                     .resizable()
@@ -100,7 +101,7 @@ struct ManView: View {
         
         
         
-    }
+    
 }
         
 }

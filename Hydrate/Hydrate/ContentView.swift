@@ -39,7 +39,6 @@ struct ContentView: View {
                             } else {
                                 Button("next", action: incrementPage)
                                     .offset(y: -70)
-                                
                                     
                             }
                             Spacer()
@@ -51,7 +50,7 @@ struct ContentView: View {
                 .tabViewStyle(.page)
                 .indexViewStyle(.page(backgroundDisplayMode: .interactive))
                 .onAppear{
-                    dotAppearance.currentPageIndicatorTintColor = .black
+                    dotAppearance.currentPageIndicatorTintColor = .systemCyan
                     dotAppearance.pageIndicatorTintColor = .gray
                     
                 }

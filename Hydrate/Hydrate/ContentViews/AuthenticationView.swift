@@ -9,10 +9,14 @@ import SwiftUI
 
 struct AuthenticationView: View {
     var body: some View {
-        NavigationView{
+        
+        
+            
         ZStack {
             CustomColor.Background
                 .ignoresSafeArea()
+                .navigationTitle("Log In")
+                .navigationBarBackButtonHidden(true)
             VStack{
                 Image("WhiteLogo")
                     .resizable()
@@ -39,7 +43,7 @@ struct AuthenticationView: View {
             
             
         }
-    }
+    
     }
     
     func GoToMain() {
