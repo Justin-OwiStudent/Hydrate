@@ -18,6 +18,8 @@
 		D08C18B02A84DB94004242A7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */; };
 		D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18B12A84DCA9004242A7 /* OnboardView.swift */; };
 		D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18B32A84E733004242A7 /* AuthenticationView.swift */; };
+		D09B23C22A8D10610034ED51 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09B23C12A8D10610034ED51 /* HealthKit.swift */; };
+		D0F017DD2A8D5E7F00982AC6 /* HealthActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,9 @@
 		D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		D08C18B12A84DCA9004242A7 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		D08C18B32A84E733004242A7 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		D09B23C12A8D10610034ED51 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
+		D09B23C32A8D10AE0034ED51 /* Hydrate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hydrate.entitlements; sourceTree = "<group>"; };
+		D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthActivity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +70,7 @@
 		D07E93B62A7B0C8B00102BF6 /* Hydrate */ = {
 			isa = PBXGroup;
 			children = (
+				D09B23C32A8D10AE0034ED51 /* Hydrate.entitlements */,
 				D08C18B62A87C06A004242A7 /* ContentModels */,
 				D08C18B52A87C042004242A7 /* ContentViews */,
 				D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */,
@@ -87,6 +93,7 @@
 		D08C18B52A87C042004242A7 /* ContentViews */ = {
 			isa = PBXGroup;
 			children = (
+				D09B23C02A8D0FDE0034ED51 /* HealthKit */,
 				D08C18A92A83A463004242A7 /* ManView.swift */,
 				D08C18B32A84E733004242A7 /* AuthenticationView.swift */,
 				D08C18B12A84DCA9004242A7 /* OnboardView.swift */,
@@ -100,8 +107,17 @@
 			isa = PBXGroup;
 			children = (
 				D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */,
+				D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */,
 			);
 			path = ContentModels;
+			sourceTree = "<group>";
+		};
+		D09B23C02A8D0FDE0034ED51 /* HealthKit */ = {
+			isa = PBXGroup;
+			children = (
+				D09B23C12A8D10610034ED51 /* HealthKit.swift */,
+			);
+			path = HealthKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -176,6 +192,8 @@
 			files = (
 				D07E93BA2A7B0C8B00102BF6 /* ContentView.swift in Sources */,
 				D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */,
+				D0F017DD2A8D5E7F00982AC6 /* HealthActivity.swift in Sources */,
+				D09B23C22A8D10610034ED51 /* HealthKit.swift in Sources */,
 				D07E93C62A7B0CD100102BF6 /* SplashScreenView.swift in Sources */,
 				D08C18AC2A8413D0004242A7 /* StepView.swift in Sources */,
 				D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */,
@@ -308,11 +326,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Hydrate/Hydrate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hydrate/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to access your health info to start using our application";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -336,11 +356,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Hydrate/Hydrate.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hydrate/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to access your health info to start using our application";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

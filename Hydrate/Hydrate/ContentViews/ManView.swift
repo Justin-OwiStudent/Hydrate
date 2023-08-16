@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ManView: View {
+    
+    @ObservedObject var manager: HealthKit = HealthKit()
+    
+    
     var body: some View {
         
         
@@ -53,12 +57,46 @@ struct ManView: View {
                     .background(CustomColor.Primary)
                     .cornerRadius(10)
                     
-                    VStack{
-                        Text("Todays Steps")
-                            .foregroundColor(.white)
+                    VStack(){
+                        ForEach(manager.activities) {activity in
+                            VStack(alignment: .leading, spacing: 6) {
+                                HStack{
+                                    
+                                    Image(systemName: activity.image)
+                                        .foregroundColor(.orange)
+                                        .font(.system(size: 10))
+                                        .frame(alignment: .leading)
+                                    
+                                    Text(activity.title).bold()
+                                        .foregroundColor(.orange)
+                                        .font(.system(size: 12))
+                                        .frame(alignment: .leading)
+                                    
+                                        
+                                }
+                                Text(activity.amount)
+                                    .foregroundColor(.black)
+                                    .fontWeight(.bold)
+                                    .font(.system(size: 20))
+                                    .frame(alignment: .leading)
+                                
+                            }
+                            .frame(width: 150)
+                            .cornerRadius(10)
+                            .frame(width: 150)
+                            .padding(10)
+                            .background(.white)
+                            
+                                
+                        }
+                      
+                            
+                        
+                       
+                        
+                            
                     }
                     .frame(width: 150,height: 150)
-                    .background(CustomColor.Primary)
                     .cornerRadius(10)
                 }
                

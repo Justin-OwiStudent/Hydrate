@@ -10,6 +10,8 @@ import Charts
 
 struct StepView: View {
     
+    @ObservedObject var manager: HealthKit = HealthKit()
+    
     struct Value: Identifiable {
         var id = UUID()
         var day: String
@@ -42,23 +44,75 @@ struct StepView: View {
             ScrollView {
                 VStack{
                     
-                    VStack{
-                        Text("Steps")
-                            .bold()
-                        Text("1500 Steps")
-                        
-                    }
-                    .frame(width: 350, height: 100)
-                    .background(CustomColor.Secondary)
-                    .cornerRadius(10)
+//                    VStack(spacing: 15) {
+//
+//                            HStack {
+//                                Image(systemName: "flame")
+//                                    .foregroundColor(.orange)
+//                                    .font(.system(size: 15))
+//
+//
+//
+//
+//                                Text("Calories Burnt").bold()
+//                                    .font(.system(size: 15))
+//                                    .foregroundColor(.orange)
+//
+//                            }
+//                            .frame(width: 150)
+//                            .offset(x: -100)
+//
+//
+//
+//                            Text("2000").bold()
+//                                .font(.system(size: 35))
+//                                .foregroundColor(.black)
+//                                .offset(x: -110)
+//
+//
+//
+//                    }
+//                    .frame(width: 350, height: 100)
+//                    .background(CustomColor.Secondary)
+//                    .cornerRadius(10)
                     
-                    VStack{
-                        Text("Average Steps per month")
-                            .bold()
+                    
+                    ForEach(manager.activities) { activity in
+                        VStack(spacing: 15){
+                            HStack {
+                                Image(systemName: activity.image)
+                                    .foregroundColor(.orange)
+                                    .font(.system(size: 15))
+                                    
+
+                                Text(activity.title).bold()
+                                    .font(.system(size: 15))
+                                    .foregroundColor(.orange)
+                                   
+                            }
+                            .frame(width: 150)
+                            .offset(x: -100)
+
+
+                            Text(activity.amount).bold()
+                               .font(.system(size: 35))
+                               .foregroundColor(.black)
+                               .offset(x: -110)
+
+                        }
+                        .frame(width: 350, height: 100)
+                        .background(CustomColor.Secondary)
+                        .cornerRadius(10)
                     }
-                    .frame(width: 350, height: 100)
-                    .background(CustomColor.Secondary)
-                    .cornerRadius(10)
+                    
+                    
+//                    VStack{
+//                        Text("Average Steps per month")
+//                            .bold()
+//                    }
+//                    .frame(width: 350, height: 100)
+//                    .background(CustomColor.Secondary)
+//                    .cornerRadius(10)
                     
                     VStack{
                         Text("Energy")
