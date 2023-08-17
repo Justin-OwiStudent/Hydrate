@@ -7,6 +7,19 @@
 
 import SwiftUI
 
+struct GrowingButton: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .padding()
+            .background(CustomColor.Primary)
+            .foregroundStyle(.white)
+            .clipShape(Capsule())
+            .scaleEffect(configuration.isPressed ? 1.2 : 1)
+            .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
+            .offset(y: -70)
+    }
+}
+
 struct ContentView: View {
     @State private var showSplash = true
     @State private var pageIndex = 0
@@ -36,9 +49,24 @@ struct ContentView: View {
                                 })
                                 .offset(y: -70)
                                 
+//                                Button("Next", action: incrementPage)
+//                                    .buttonStyle(GrowingButton())
+                                
                             } else {
-                                Button("next", action: incrementPage)
-                                    .offset(y: -70)
+//                                Ellipse()
+//                                    .fill(.white)
+//                                    .frame(width: 75, height: 75)
+//                                    .offset(y: -70)
+                                    
+//                                Button("next", action: incrementPage)
+//                                    .padding(10)
+//                                    .background(CustomColor.Secondary)
+//                                    .frame(width: 100, height: 50)
+//                                    .cornerRadius(20)
+//                                    .offset(y: -70)
+                                
+                                Button("Next", action: incrementPage)
+                                    .buttonStyle(GrowingButton())
                                     
                             }
                             Spacer()

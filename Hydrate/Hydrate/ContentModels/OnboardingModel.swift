@@ -19,7 +19,7 @@ struct Page: Identifiable, Equatable {
     
     static var samplePages: [Page] = [
         Page(name: "Welcome yo Hydrate", description: "We offer you a way to keep track of your health, quick and easy", ImageUrl: "WhiteLogo", tag: 0),
-        Page(name: "Water", description: "Keep track of your water intake by telling us how much water you have drank", ImageUrl: "WhiteLogo", tag: 1),
-        Page(name: "Steps", description: "Keep track of your daily steps, calories and distance travelled, all day every day", ImageUrl: "WhiteLogo", tag: 2),
+        Page(name: "Water is important!", description: "Always forgetting how much water you’ve had? Well look no further, each time you chug a glass tell us so we can keep track of you hydration!", ImageUrl: "Water", tag: 1),
+        Page(name: "With you, every step of the way.", description: "Want to know how active you have been today? Well lucky for you, we have a built in step counter, we can calculate so you don’t have to!", ImageUrl: "Walking", tag: 2),
     ]
 }
