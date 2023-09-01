@@ -17,6 +17,9 @@ class HealthKit: ObservableObject {
     
     //array with tracked health activity data
     @Published var activities: [HealthActivity] = []
+    @Published var StepsActivity: [Step] = []
+    @Published var CaloriesActivity: [Calorie] = []
+    
     
     init(){
         
@@ -66,7 +69,7 @@ class HealthKit: ObservableObject {
             let stepCount = quantity.doubleValue(for: .count())
             print("Total steps: \(stepCount)")
             
-            self.activities.append(HealthActivity(title: "Daily steps", amount: "\(stepCount.rounded(.towardZero))", image: "figure.walk.diamond", color: ""))
+            self.StepsActivity.append(Step(docId: "", title: "Daily steps", amount: "\(stepCount.rounded(.towardZero))", image: "figure.walk.diamond",  date: ""))
         }
         
         //execute our query for the functionality to work
@@ -91,7 +94,7 @@ class HealthKit: ObservableObject {
             let calorieTotal = quantity.doubleValue(for: .kilocalorie())
             print("Total Calories: \(calorieTotal)")
             
-            self.activities.append(HealthActivity(title: "Calories Burnt", amount: "\(calorieTotal.rounded(.towardZero))", image: "flame", color: ""))
+            self.CaloriesActivity.append(Calorie(docId: "", title: "Calories Burnt", amount: "\(calorieTotal.rounded(.towardZero))", image: "flame", date: ""))
             
         }
         
@@ -99,5 +102,9 @@ class HealthKit: ObservableObject {
         healthStore.execute(query)
         
     }
+    
+    
+    
+    
     
 }

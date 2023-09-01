@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
 
 struct ManView: View {
     
@@ -13,168 +15,185 @@ struct ManView: View {
     
     @State private var action: Int? = 0
     
-    //    struct GrowingButton: ButtonStyle {
-    //        func makeBody(configuration: Configuration) -> some View {
-    //            configuration.label
-    //                .padding()
-    //                .background(CustomColor.Primary)
-    //                .foregroundStyle(.white)
-    //                .clipShape(Capsule())
-    //                .scaleEffect(configuration.isPressed ? 1.2 : 1)
-    //                .animation(.easeOut(duration: 0.2), value: configuration.isPressed)
-    //                .offset(y: -70)
-    //        }
-    //    }
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    
+    @State var isNotAuthenticated = true
+    
+    @State var authHandler: NSObjectProtocol? = nil
+    
+    @State var GoToDetailView = false
+    
+    func GoDetail() {
+        GoToDetailView = true
+    }
     
     var body: some View {
         
-        
-        //        Color(UIColor.green)
-        //            .ignoresSafeArea()
-        
-        
-        
+        NavigationView{
+            
+            
             ZStack {
                 CustomColor.Background
                     .ignoresSafeArea()
-                    .navigationBarBackButtonHidden(true)
-                VStack {
-                    Image("WhiteLogo")
-                        .resizable()
-                        .frame(width: 100, height: 100)
-                        .aspectRatio(contentMode: .fit)
-                        .offset(y: -100)
-                    
-                    
-                    
-                    VStack {
-                        Text("Welcome Back /username")
-                            .font(.system(size: 25))
-                            .multilineTextAlignment(.center)
+                
+                VStack{
+                
+                
+//                HStack{
+//                    Text("Activity")
+//                        .font(.title)
+//                        .fontWeight(.bold)
+//
+//                    Spacer()
+//                }
+//                .padding()
+//
+                HStack {
+                    VStack{
+                        
+                        Text("Welcome back, Justin")
+                            .font(.system(size: 20))
+                            .padding(10)
+                        
+                        
+                        
                         Text("Remember to let us know that you drank some water, while your at it take a look at your steps and calories burnt")
-                            .multilineTextAlignment(.center)
-                        
-                    }
-                    .frame(width: 300, height: 100)
-                    .offset(y: -100)
-                    
-                    
-                    
-                    
-                    HStack{
-                        VStack{
-                            
-                            Text("Todays Cups")
-                                .foregroundColor(.white)
-                        }
-                        .frame(width: 150,height: 150)
-                        .background(CustomColor.Primary)
-                        .cornerRadius(10)
-                        
-                        VStack(){
-                            ForEach(manager.activities) {activity in
-                                VStack(alignment: .leading, spacing: 6) {
-                                    HStack{
-                                        
-                                        Image(systemName: activity.image)
-                                            .foregroundColor(.orange)
-                                            .font(.system(size: 10))
-                                            .frame(alignment: .leading)
-                                        
-                                        Text(activity.title).bold()
-                                            .foregroundColor(.orange)
-                                            .font(.system(size: 12))
-                                            .frame(alignment: .leading)
-                                        
-                                        
-                                    }
-                                    Text(activity.amount)
-                                        .foregroundColor(.black)
-                                        .fontWeight(.bold)
-                                        .font(.system(size: 20))
-                                        .frame(alignment: .leading)
-                                    
-                                }
-                                .frame(width: 150)
-                                .cornerRadius(10)
-                                .frame(width: 150)
-                                .padding(10)
-                                .background(.white)
-                                
-                                
-                            }
-                            
-                            
-                            
-                            
-                            
-                            
-                        }
-                        .frame(width: 150,height: 150)
-                        .cornerRadius(10)
-                    }
-                    
-                    HStack{
-//                                            NavigationLink(destination: WaterView(), tag: 1, selection: $action) {
-//
-//                                            }
-//                                            NavigationLink(destination: StepView(), tag: 2, selection: $action) {
-//
-//                                            }
-                        
-                        VStack{
-                            NavigationLink("Water", destination: WaterView())
-                                .foregroundColor(.white)
-                            //                        Button("Next", action: nil)
-                            //                            .onTapGesture {
-                            //                                .buttonStyle(GrowingButton())
-                            //                                self.action = 1
-                            //                            }
-                            
-                            //                        Button(.buttonStyle(GrowingButton()))
-                            //                            .onTapGesture {
-                            //
-                            //                                self.action = 1
-                            //                            }
-                            
-                            //
-                            //                        Text("Water")
-                            //                            .onTapGesture {
-                            //                                self.action = 1
-                            //                            }
-                        }
-                        .frame(width: 150,height: 100)
-                        .background(CustomColor.Primary)
-                        .cornerRadius(10)
-                        
-                        VStack{
-                            NavigationLink("Steps", destination: StepView())
-                                .foregroundColor(.white)
-                            
-                            //                        Text("Steps")
-                            //                            .foregroundColor(.white)
-                        }
-                        .frame(width: 150,height: 100)
-                        .background(CustomColor.Primary)
-                        .cornerRadius(10)
-                        
+                            .font(.system(size: 10))
+                            .frame(width: 125)
+                            .padding(10)
                     }
                     
                     
+                    
+                    Image("Yoga")
+                        .resizable()
+                    
+                    //                        .offset(x: 60)
+                    //                        .zIndex(1)
+                }
+                .frame(width: 335, height: 250)
+                .background(CustomColor.Secondary)
+                .cornerRadius(25)
+                
+                HStack{
+                    Text("Todays Stats")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        GoDetail()
+                        
+                    }) {
+                        Text("See all")
+                            .fontWeight(.bold)
+                    }
+                }
+                .padding()
+                    
+                    NavigationLink(destination: TodaysDetailsView(), isActive: $GoToDetailView) {
+                        EmptyView()
+                    }
+                
+                HStack{
+                    VStack{
+                        Image(systemName: "flame")
+                            .foregroundColor(.black)
+                            .font(.system(size: 40))
+                            .frame(alignment: .leading)
+                            .padding()
+                        
+                        Text("Todays Steps")
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .padding(.bottom)
+                        
+                        Text("2000")
+                            .font(.system(size: 15))
+                            .fontWeight(.bold)
+                    }
+                    .frame(width: 165, height: 225)
+                    .background(.white)
+                    .cornerRadius(15)
+                    
+                    Spacer()
+                    
+                    VStack{
+                        Image(systemName: "flame")
+                            .foregroundColor(.black)
+                            .font(.system(size: 40))
+                            .frame(alignment: .leading)
+                            .padding()
+                        
+                        Text("Calories Burnt")
+                            .font(.system(size: 20))
+                            .fontWeight(.bold)
+                            .padding(.bottom)
+                        
+                        
+                        Text("2000")
+                            .font(.system(size: 15))
+                            .fontWeight(.bold)
+                        
+                    }
+                    .frame(width: 165, height: 225, alignment: .center)
+                    .background(.white)
+                    .cornerRadius(15)
                     
                 }
-                
-                
-                
+                .padding()
+            
             }
+            }
+            .navigationBarBackButtonHidden(true)
+            .navigationTitle("Activity")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    HStack{
+                        Image("WhiteLogo")
+                            .resizable()
+                            .frame(width: 50, height: 50)
+                        
+                        
+
+                      
+                    }
+                }
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        do {
+                            try Auth.auth().signOut()
+                        } catch let signOutError as NSError {
+                            print("Error signing out: %@", signOutError)
+                        }
+                    } label: {
+                        Image(systemName: "pip.exit")
+                    }
+                }
+            }
+        }
         
-        
-        
-        
-        
-        
-        
-        
+//        .onAppear{
+//            //check if a valid user logged on
+//            self.authHandler = Auth.auth().addStateDidChangeListener { auth, user in
+//                print("checking auth state")
+//                if(user != nil) {
+//                    isNotAuthenticated = false
+//                    print("currentUser" + (user?.uid ?? ""))
+//                } else {
+//                    print("removing auth state checker...")
+//                    isNotAuthenticated = true
+//                }
+//            }
+//        }
+//        .onDisappear{
+//            //stop listening to auth
+//            Auth.auth().removeStateDidChangeListener(authHandler!)
+//        }
+//        .fullScreenCover(isPresented: $isNotAuthenticated) {
+//            AuthenticationView()
+//        }
         
     }
     

@@ -12,6 +12,8 @@ struct StepView: View {
     
     @ObservedObject var manager: HealthKit = HealthKit()
     
+    @StateObject var StepsViewModel = StepViewModel()
+    
     struct Value: Identifiable {
         var id = UUID()
         var day: String
@@ -119,26 +121,40 @@ struct StepView: View {
                             .bold()
                         
                         VStack{
-                            Chart {
-                                ForEach(data) { item in
-                                    LineMark(x: .value("Day", item.day), y: .value("Value", item.value),
-                                             series: .value("Year", "2022"))
-                                        .interpolationMethod(.catmullRom)
-                                        .foregroundStyle(.blue)
-                                        .symbol(by: .value("Year", "2022"))
-                                        .foregroundStyle(by: .value("Year", "2022"))
+                            ForEach(StepsViewModel.StepsList) { item in
+                                HStack {
+                                    Text(item.amount)
                                 }
-                                ForEach(data2) { item in
-                                    LineMark(x: .value("Day", item.day), y: .value("Value", item.value),
-                                             series: .value("Year", "2021"))
-                                        .interpolationMethod(.catmullRom)
-                                        .foregroundStyle(.green)
-                                        .symbol(by: .value("Year", "2022"))
-                                        .foregroundStyle(by: .value("Year", "2022"))
-                                        
-                                }
+
                             }
+                            Button(action: {
+                                StepsViewModel.CreateStepData(DailySteps: Step(title: "testing", amount: "2000", image: "flame", date: ""))
+                            }){
+                                Text("adding steps...")
+                            }
+//                            Chart {
+//                                ForEach(StepsViewModel.StepsList) { item in
+//                                    LineMark(x: .value("Steps", item.amount), y: .value("Day", item.amount),
+//                                             series: .value("Year", "2022"))
+//                                        .interpolationMethod(.catmullRom)
+//                                        .foregroundStyle(.blue)
+//                                        .symbol(by: .value("Year", "2022"))
+//                                        .foregroundStyle(by: .value("Year", "2022"))
+//                                }
+////                                ForEach(data2) { item in
+////                                    LineMark(x: .value("Day", item.day), y: .value("Value", item.value),
+////                                             series: .value("Year", "2021"))
+////                                        .interpolationMethod(.catmullRom)
+////                                        .foregroundStyle(.green)
+////                                        .symbol(by: .value("Year", "2022"))
+////                                        .foregroundStyle(by: .value("Year", "2022"))
+////
+////                                }
+//                            }
                                 
+                        }
+                        .onAppear{
+                            StepsViewModel.getAllStepData()
                         }
                         .frame(width: 300, height: 150)
                         .background(CustomColor.Tertiary)

@@ -9,10 +9,14 @@ import SwiftUI
 import Foundation
 
 //model for info gotten from healthkit
-struct HealthActivity: Identifiable {
-    let id = UUID()
+struct HealthActivity: Identifiable, Codable {
+    var id = UUID()
     let title: String
     let amount: String
     let image: String
-    let color: String
+    let date: String
+    
+    enum CodingKeys:String, CodingKey{
+        case title, amount, image, date
+    }
 }

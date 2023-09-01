@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D00F45DE2A95027E006E99C4 /* StepsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */; };
+		D03EE3A82A962B1600B25257 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A72A962B1600B25257 /* StepsModel.swift */; };
+		D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A92A962B5200B25257 /* CarloriesModel.swift */; };
+		D03EE3AC2A962B7700B25257 /* CaloriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */; };
+		D03EE3AE2A96B4BE00B25257 /* TodaysDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */; };
 		D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */; };
 		D07E93BA2A7B0C8B00102BF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E93B92A7B0C8B00102BF6 /* ContentView.swift */; };
 		D07E93BC2A7B0C9100102BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D07E93BB2A7B0C9100102BF6 /* Assets.xcassets */; };
@@ -18,15 +23,23 @@
 		D08C18B02A84DB94004242A7 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */; };
 		D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18B12A84DCA9004242A7 /* OnboardView.swift */; };
 		D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D08C18B32A84E733004242A7 /* AuthenticationView.swift */; };
+		D099ED812A9CBBCE0005F2EA /* CustomTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = D099ED802A9CBBCE0005F2EA /* CustomTabBar.swift */; };
 		D09B23C22A8D10610034ED51 /* HealthKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = D09B23C12A8D10610034ED51 /* HealthKit.swift */; };
 		D0F017DD2A8D5E7F00982AC6 /* HealthActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */; };
 		D0F017DF2A8E211800982AC6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0F017DE2A8E211700982AC6 /* GoogleService-Info.plist */; };
 		D0F017E22A8E22B800982AC6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = D0F017E12A8E22B800982AC6 /* FirebaseAuth */; };
 		D0F017E42A8E22B800982AC6 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = D0F017E32A8E22B800982AC6 /* FirebaseFirestore */; };
 		D0F017E62A8E22B800982AC6 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D0F017E52A8E22B800982AC6 /* FirebaseFirestoreSwift */; };
+		D0F017E92A8E521200982AC6 /* BioAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F017E82A8E521200982AC6 /* BioAuthView.swift */; };
+		D0F017EB2A8E537500982AC6 /* BioAuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F017EA2A8E537500982AC6 /* BioAuthManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
+		D03EE3A72A962B1600B25257 /* StepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
+		D03EE3A92A962B5200B25257 /* CarloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarloriesModel.swift; sourceTree = "<group>"; };
+		D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesViewModel.swift; sourceTree = "<group>"; };
+		D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysDetailsView.swift; sourceTree = "<group>"; };
 		D07E93B42A7B0C8B00102BF6 /* Hydrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrateApp.swift; sourceTree = "<group>"; };
 		D07E93B92A7B0C8B00102BF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,10 +52,13 @@
 		D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
 		D08C18B12A84DCA9004242A7 /* OnboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardView.swift; sourceTree = "<group>"; };
 		D08C18B32A84E733004242A7 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		D099ED802A9CBBCE0005F2EA /* CustomTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBar.swift; sourceTree = "<group>"; };
 		D09B23C12A8D10610034ED51 /* HealthKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKit.swift; sourceTree = "<group>"; };
 		D09B23C32A8D10AE0034ED51 /* Hydrate.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Hydrate.entitlements; sourceTree = "<group>"; };
 		D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthActivity.swift; sourceTree = "<group>"; };
 		D0F017DE2A8E211700982AC6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D0F017E82A8E521200982AC6 /* BioAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAuthView.swift; sourceTree = "<group>"; };
+		D0F017EA2A8E537500982AC6 /* BioAuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioAuthManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +75,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D00F45DC2A950261006E99C4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		D03EE3A52A962AFB00B25257 /* Steps */ = {
+			isa = PBXGroup;
+			children = (
+				D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */,
+				D03EE3A72A962B1600B25257 /* StepsModel.swift */,
+			);
+			path = Steps;
+			sourceTree = "<group>";
+		};
+		D03EE3A62A962B0200B25257 /* Calories */ = {
+			isa = PBXGroup;
+			children = (
+				D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */,
+				D03EE3A92A962B5200B25257 /* CarloriesModel.swift */,
+			);
+			path = Calories;
+			sourceTree = "<group>";
+		};
 		D07E93AB2A7B0C8B00102BF6 = {
 			isa = PBXGroup;
 			children = (
@@ -66,6 +107,7 @@
 				D07E93B52A7B0C8B00102BF6 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		D07E93B52A7B0C8B00102BF6 /* Products */ = {
 			isa = PBXGroup;
@@ -80,12 +122,15 @@
 			children = (
 				D0F017DE2A8E211700982AC6 /* GoogleService-Info.plist */,
 				D09B23C32A8D10AE0034ED51 /* Hydrate.entitlements */,
+				D09B23C02A8D0FDE0034ED51 /* HealthKit */,
+				D00F45DC2A950261006E99C4 /* ViewModels */,
 				D08C18B62A87C06A004242A7 /* ContentModels */,
 				D08C18B52A87C042004242A7 /* ContentViews */,
 				D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */,
 				D07E93B92A7B0C8B00102BF6 /* ContentView.swift */,
 				D07E93BB2A7B0C9100102BF6 /* Assets.xcassets */,
 				D07E93BD2A7B0C9100102BF6 /* Preview Content */,
+				D099ED802A9CBBCE0005F2EA /* CustomTabBar.swift */,
 			);
 			path = Hydrate;
 			sourceTree = "<group>";
@@ -102,12 +147,12 @@
 		D08C18B52A87C042004242A7 /* ContentViews */ = {
 			isa = PBXGroup;
 			children = (
-				D09B23C02A8D0FDE0034ED51 /* HealthKit */,
 				D08C18A92A83A463004242A7 /* ManView.swift */,
 				D08C18B32A84E733004242A7 /* AuthenticationView.swift */,
 				D08C18B12A84DCA9004242A7 /* OnboardView.swift */,
 				D08C18AD2A8417D7004242A7 /* WaterView.swift */,
 				D08C18AB2A8413D0004242A7 /* StepView.swift */,
+				D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */,
 			);
 			path = ContentViews;
 			sourceTree = "<group>";
@@ -116,7 +161,8 @@
 			isa = PBXGroup;
 			children = (
 				D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */,
-				D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */,
+				D0F017E82A8E521200982AC6 /* BioAuthView.swift */,
+				D0F017EA2A8E537500982AC6 /* BioAuthManager.swift */,
 			);
 			path = ContentModels;
 			sourceTree = "<group>";
@@ -124,6 +170,9 @@
 		D09B23C02A8D0FDE0034ED51 /* HealthKit */ = {
 			isa = PBXGroup;
 			children = (
+				D03EE3A62A962B0200B25257 /* Calories */,
+				D03EE3A52A962AFB00B25257 /* Steps */,
+				D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */,
 				D09B23C12A8D10610034ED51 /* HealthKit.swift */,
 			);
 			path = HealthKit;
@@ -210,15 +259,23 @@
 			files = (
 				D07E93BA2A7B0C8B00102BF6 /* ContentView.swift in Sources */,
 				D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */,
+				D099ED812A9CBBCE0005F2EA /* CustomTabBar.swift in Sources */,
 				D0F017DD2A8D5E7F00982AC6 /* HealthActivity.swift in Sources */,
+				D03EE3A82A962B1600B25257 /* StepsModel.swift in Sources */,
+				D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */,
 				D09B23C22A8D10610034ED51 /* HealthKit.swift in Sources */,
 				D07E93C62A7B0CD100102BF6 /* SplashScreenView.swift in Sources */,
 				D08C18AC2A8413D0004242A7 /* StepView.swift in Sources */,
 				D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */,
 				D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */,
+				D03EE3AC2A962B7700B25257 /* CaloriesViewModel.swift in Sources */,
 				D08C18B02A84DB94004242A7 /* OnboardingModel.swift in Sources */,
 				D08C18AE2A8417D7004242A7 /* WaterView.swift in Sources */,
+				D03EE3AE2A96B4BE00B25257 /* TodaysDetailsView.swift in Sources */,
+				D00F45DE2A95027E006E99C4 /* StepsViewModel.swift in Sources */,
+				D0F017EB2A8E537500982AC6 /* BioAuthManager.swift in Sources */,
 				D08C18AA2A83A463004242A7 /* ManView.swift in Sources */,
+				D0F017E92A8E521200982AC6 /* BioAuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,17 +407,22 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Hydrate/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please use FaceID to keep your data safe";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to access your health info to start using our application";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Justin.Hydrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -380,17 +442,22 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Hydrate/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please use FaceID to keep your data safe";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow us to access your health info to start using our application";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				OTHER_LIBTOOLFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = Justin.Hydrate;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
