@@ -12,7 +12,8 @@ struct SplashScreenView: View {
         ZStack {
             Image("Splash")
                 .resizable()
-                .edgesIgnoringSafeArea(.all)
+                .ignoresSafeArea(.all)
+//                .edgesIgnoringSafeArea(.all)
         }
     }
 }

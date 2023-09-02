@@ -94,13 +94,6 @@ class HealthKit: ObservableObject {
         // Execute our query for the functionality to work
         healthStore.execute(query)
     }
-
-    
-     
-    
-    
-    
-    
     
     func fetchDailyCalories() {
         
@@ -154,6 +147,33 @@ class HealthKit: ObservableObject {
         healthStore.execute(query)
         
     }
+    
+    //    func updateFirebaseDocument() {
+    //        guard let userId = Auth.auth().currentUser?.uid else {
+    //            print("User is not authenticated.")
+    //            return
+    //        }
+    //
+    //        let db = Firestore.firestore()
+    //        let userRef = db.collection("users").document(userId)
+    //        print("--------------\(activeEnergy)")
+    //
+    //        userRef.updateData([
+    //            "activeEnergy": activeEnergy,
+    //            "exerciseTime": exerciseTime,
+    //            "standTime": standTime,
+    //            "hr": hr,
+    //            "restinghr": restinghr,
+    //            "walkinghr": walkinghr,
+    //            "time": Date()
+    //        ]) { error in
+    //            if let error = error {
+    //                print("Error updating Firebase document: \(error.localizedDescription)")
+    //            } else {
+    //                print("Firebase document updated successfully.")
+    //            }
+    //        }
+    //    }
     
     
     

@@ -12,9 +12,15 @@ struct AuthenticationView: View {
     
     @State var email = ""
     @State var password = ""
+    @State var username = ""
     @State var showingLoginScreen = false
     
     @State var errorMessage = ""
+    
+    @StateObject var VM = ViewModel()
+    
+    
+    
     
     //login
     func LoginUser(){
@@ -42,12 +48,14 @@ struct AuthenticationView: View {
             }
             if(authResult != nil){
                 print("Signed up user" + (authResult?.user.uid ?? ""));
-                
+                VM.createUserInDB(username: self.username, email: self.email, userId: authResult?.user.uid ?? "" )
                
             }
         }
         
     }
+    
+
     
     var body: some View {
         
@@ -74,6 +82,13 @@ struct AuthenticationView: View {
 //                }
             
             VStack{
+                TextField("Username", text: $username)
+                    .padding()
+                    .background(.white)
+                    .foregroundColor(.black)
+                    .frame(width: 300)
+                    .cornerRadius(15)
+                
                 TextField("Email", text: $email)
                     .padding()
                     .background(.white)
