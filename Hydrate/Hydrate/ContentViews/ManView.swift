@@ -15,7 +15,7 @@ struct ManView: View {
     
     @State private var action: Int? = 0
     
-    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @State var isNotAuthenticated = true
     

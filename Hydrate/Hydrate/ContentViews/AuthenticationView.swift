@@ -69,7 +69,7 @@ struct AuthenticationView: View {
 //                        } label: {
 //                            Image(systemName: "pip.exit")
 //                        }
-//                        
+//
 //                    }
 //                }
             
@@ -81,7 +81,7 @@ struct AuthenticationView: View {
                     .frame(width: 300)
                     .cornerRadius(15)
                 
-                SecureField("Password", text: $password)
+                TextField("Password", text: $password)
                     .padding()
                     .background(.white)
                     .frame(width: 300)

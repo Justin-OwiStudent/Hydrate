@@ -12,6 +12,7 @@
 		D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A92A962B5200B25257 /* CarloriesModel.swift */; };
 		D03EE3AC2A962B7700B25257 /* CaloriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */; };
 		D03EE3AE2A96B4BE00B25257 /* TodaysDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */; };
+		D07378F32AA2A74400D51C8B /* WaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07378F22AA2A74400D51C8B /* WaterModel.swift */; };
 		D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */; };
 		D07E93BA2A7B0C8B00102BF6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E93B92A7B0C8B00102BF6 /* ContentView.swift */; };
 		D07E93BC2A7B0C9100102BF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D07E93BB2A7B0C9100102BF6 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		D03EE3A92A962B5200B25257 /* CarloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarloriesModel.swift; sourceTree = "<group>"; };
 		D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesViewModel.swift; sourceTree = "<group>"; };
 		D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysDetailsView.swift; sourceTree = "<group>"; };
+		D07378F22AA2A74400D51C8B /* WaterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterModel.swift; sourceTree = "<group>"; };
 		D07E93B42A7B0C8B00102BF6 /* Hydrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrateApp.swift; sourceTree = "<group>"; };
 		D07E93B92A7B0C8B00102BF6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -98,6 +100,14 @@
 				D03EE3A92A962B5200B25257 /* CarloriesModel.swift */,
 			);
 			path = Calories;
+			sourceTree = "<group>";
+		};
+		D07378F12AA2A72F00D51C8B /* Water */ = {
+			isa = PBXGroup;
+			children = (
+				D07378F22AA2A74400D51C8B /* WaterModel.swift */,
+			);
+			path = Water;
 			sourceTree = "<group>";
 		};
 		D07E93AB2A7B0C8B00102BF6 = {
@@ -170,6 +180,7 @@
 		D09B23C02A8D0FDE0034ED51 /* HealthKit */ = {
 			isa = PBXGroup;
 			children = (
+				D07378F12AA2A72F00D51C8B /* Water */,
 				D03EE3A62A962B0200B25257 /* Calories */,
 				D03EE3A52A962AFB00B25257 /* Steps */,
 				D0F017DC2A8D5E7F00982AC6 /* HealthActivity.swift */,
@@ -260,6 +271,7 @@
 				D07E93BA2A7B0C8B00102BF6 /* ContentView.swift in Sources */,
 				D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */,
 				D099ED812A9CBBCE0005F2EA /* CustomTabBar.swift in Sources */,
+				D07378F32AA2A74400D51C8B /* WaterModel.swift in Sources */,
 				D0F017DD2A8D5E7F00982AC6 /* HealthActivity.swift in Sources */,
 				D03EE3A82A962B1600B25257 /* StepsModel.swift in Sources */,
 				D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */,

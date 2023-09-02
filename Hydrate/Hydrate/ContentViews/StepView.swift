@@ -123,15 +123,15 @@ struct StepView: View {
                         VStack{
                             ForEach(StepsViewModel.StepsList) { item in
                                 HStack {
-                                    Text(item.amount)
+                                    Text(item.stepCount)
                                 }
 
                             }
-                            Button(action: {
-                                StepsViewModel.CreateStepData(DailySteps: Step(title: "testing", amount: "2000", image: "flame", date: ""))
-                            }){
-                                Text("adding steps...")
-                            }
+//                            Button(action: {
+//                                StepsViewModel.CreateStepData(DailySteps: Step(title: "testing", amount: "2000", image: "flame", date: ""))
+//                            }){
+//                                Text("adding steps...")
+//                            }
 //                            Chart {
 //                                ForEach(StepsViewModel.StepsList) { item in
 //                                    LineMark(x: .value("Steps", item.amount), y: .value("Day", item.amount),
