@@ -7,10 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D00F45DE2A95027E006E99C4 /* StepsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */; };
 		D03EE3A82A962B1600B25257 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A72A962B1600B25257 /* StepsModel.swift */; };
 		D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A92A962B5200B25257 /* CarloriesModel.swift */; };
-		D03EE3AC2A962B7700B25257 /* CaloriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */; };
 		D03EE3AE2A96B4BE00B25257 /* TodaysDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */; };
 		D07378F32AA2A74400D51C8B /* WaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07378F22AA2A74400D51C8B /* WaterModel.swift */; };
 		D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07E93B72A7B0C8B00102BF6 /* HydrateApp.swift */; };
@@ -35,7 +33,6 @@
 		D0F5186B2AA3E233008E5D14 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5186A2AA3E233008E5D14 /* ViewModel.swift */; };
 		D0F5186F2AA4854A008E5D14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5186E2AA4854A008E5D14 /* User.swift */; };
 		D0F518712AA486B4008E5D14 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518702AA486B4008E5D14 /* UserViewModel.swift */; };
-		D0F518742AA4994C008E5D14 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518732AA4994C008E5D14 /* AuthModel.swift */; };
 		D0F5187E2AA4BC68008E5D14 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F5187D2AA4BC67008E5D14 /* WidgetKit.framework */; };
 		D0F518802AA4BC68008E5D14 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F5187F2AA4BC68008E5D14 /* SwiftUI.framework */; };
 		D0F518832AA4BC68008E5D14 /* HydrateWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518822AA4BC68008E5D14 /* HydrateWidgetBundle.swift */; };
@@ -72,10 +69,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
+		D013BD3C2AA51E1000F08C4F /* HydrateWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HydrateWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D03EE3A72A962B1600B25257 /* StepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		D03EE3A92A962B5200B25257 /* CarloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarloriesModel.swift; sourceTree = "<group>"; };
-		D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesViewModel.swift; sourceTree = "<group>"; };
 		D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodaysDetailsView.swift; sourceTree = "<group>"; };
 		D07378F22AA2A74400D51C8B /* WaterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterModel.swift; sourceTree = "<group>"; };
 		D07E93B42A7B0C8B00102BF6 /* Hydrate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hydrate.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,7 +95,6 @@
 		D0F5186A2AA3E233008E5D14 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		D0F5186E2AA4854A008E5D14 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0F518702AA486B4008E5D14 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		D0F518732AA4994C008E5D14 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
 		D0F5187B2AA4BC67008E5D14 /* HydrateWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HydrateWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0F5187D2AA4BC67008E5D14 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		D0F5187F2AA4BC68008E5D14 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -140,9 +135,6 @@
 				D0F518702AA486B4008E5D14 /* UserViewModel.swift */,
 				D0F5186A2AA3E233008E5D14 /* ViewModel.swift */,
 				D09B23C12A8D10610034ED51 /* HealthKit.swift */,
-				D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */,
-				D03EE3AB2A962B7700B25257 /* CaloriesViewModel.swift */,
-				D0F518732AA4994C008E5D14 /* AuthModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -150,6 +142,7 @@
 		D07E93AB2A7B0C8B00102BF6 = {
 			isa = PBXGroup;
 			children = (
+				D013BD3C2AA51E1000F08C4F /* HydrateWidgetExtension.entitlements */,
 				D07E93B62A7B0C8B00102BF6 /* Hydrate */,
 				D0F518812AA4BC68008E5D14 /* HydrateWidget */,
 				D0F5187C2AA4BC67008E5D14 /* Frameworks */,
@@ -382,14 +375,11 @@
 				D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */,
 				D0F5186B2AA3E233008E5D14 /* ViewModel.swift in Sources */,
 				D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */,
-				D03EE3AC2A962B7700B25257 /* CaloriesViewModel.swift in Sources */,
 				D08C18B02A84DB94004242A7 /* OnboardingModel.swift in Sources */,
 				D08C18AE2A8417D7004242A7 /* WaterView.swift in Sources */,
 				D0F5186F2AA4854A008E5D14 /* User.swift in Sources */,
 				D03EE3AE2A96B4BE00B25257 /* TodaysDetailsView.swift in Sources */,
-				D00F45DE2A95027E006E99C4 /* StepsViewModel.swift in Sources */,
 				D0F017EB2A8E537500982AC6 /* BioAuthManager.swift in Sources */,
-				D0F518742AA4994C008E5D14 /* AuthModel.swift in Sources */,
 				D08C18AA2A83A463004242A7 /* ManView.swift in Sources */,
 				D0F017E92A8E521200982AC6 /* BioAuthView.swift in Sources */,
 			);
@@ -541,6 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hydrate/Preview Content\"";
+				DEVELOPMENT_TEAM = F4439RL35Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please use FaceID to keep your data safe";
@@ -578,6 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Hydrate/Preview Content\"";
+				DEVELOPMENT_TEAM = F4439RL35Y;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Please use FaceID to keep your data safe";
@@ -610,8 +602,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HydrateWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F4439RL35Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HydrateWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HydrateWidget;
@@ -636,8 +630,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_ENTITLEMENTS = HydrateWidgetExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = F4439RL35Y;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HydrateWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = HydrateWidget;

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import Charts
+//import Charts
 
 struct TodaysDetailsView: View {
     
@@ -126,20 +126,20 @@ struct TodaysDetailsView: View {
                     }
                     .padding()
                     
-                    VStack{
-                        Chart{
-                            ForEach(data) {d in
-                                BarMark(x: .value("Day", d.day),
-                                        y: .value("Steps", d.steps)
-                                )
-                                
-                            }
-                        }
-                        .frame(width: 300, height: 200)
-                    }
-                    .frame(width: 350, height: 250)
-                    .background(.white)
-                    .cornerRadius(15)
+//                    VStack{
+//                        Chart{
+//                            ForEach(data) {d in
+//                                BarMark(x: .value("Day", d.day),
+//                                        y: .value("Steps", d.steps)
+//                                )
+//                                
+//                            }
+//                        }
+//                        .frame(width: 300, height: 200)
+//                    }
+//                    .frame(width: 350, height: 250)
+//                    .background(.white)
+//                    .cornerRadius(15)
                     
                     
                 }

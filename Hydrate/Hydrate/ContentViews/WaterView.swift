@@ -15,12 +15,16 @@ struct WaterView: View {
     
     @State private var amountText = ""
     
+    @State private var isShowingAlert = false
+    
     var body: some View {
-        ZStack(alignment: .top) {
+        ZStack {
+            CustomColor.Background
+                .ignoresSafeArea()
             
-            VStack{
                 
                 VStack{
+                    
                     VStack{
                         Image(systemName: "drop.circle")
                             .resizable()
@@ -44,32 +48,40 @@ struct WaterView: View {
                     
                     
                     
-                    Text(String(userVM.userData?.water ?? 0) + "ml").bold()
+                    Text(String(userVM.userData?.water.rounded(.down) ?? 0) + "ml").bold()
                         .font(.title)
                     
+                    TextField("Enter amount in milliliters", text: $amountText)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .keyboardType(.numberPad)
+                    
+                    Button(action: {
+                        // Parse and save the input amount to HealthKit
+                        if let amount = Double(amountText) {
+                            VM.saveWaterIntake(amountInMilliliters: amount, date: Date())
+                        }
+                        isShowingAlert.toggle()
+                    }) {
+                        Text("Save Water Intake")
+                            .padding()
+                            .background(.thinMaterial)
+                            .foregroundStyle(.black)
+                            .cornerRadius(15)
+                    }
                     
                 }
                 
-                TextField("Enter amount in milliliters", text: $amountText)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .keyboardType(.numberPad)
-                
-                Button(action: {
-                    // Parse and save the input amount to HealthKit
-                    if let amount = Double(amountText) {
-                        VM.saveWaterIntake(amountInMilliliters: amount, date: Date())
-                    }
-                }) {
-                    Text("Save Water Intake")
-                        .padding()
-                        .background(.thinMaterial)
-                        .foregroundStyle(.black)
-                        .cornerRadius(15)
-                }
                
-            }
+               
+            
+            .alert(isPresented: $isShowingAlert) {
+                        Alert(
+                            title: Text("Water Added"),
+                            message: Text("You have successfully added water."),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
         }
-        .padding()
         .navigationTitle("Your Water")
         .background(CustomColor.Background)
         .ignoresSafeArea()

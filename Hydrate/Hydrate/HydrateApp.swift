@@ -27,13 +27,14 @@ struct HydrateApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environmentObject(userVM)
-                .onAppear {
-                    
-                    VM.updateFirebaseDocument()
-                        
-                }
+            NavigationStack {
+                ContentView()
+                    .onAppear{
+                        VM.updateFirebaseDocument()
+                    }
+            }
+            .environmentObject(userVM)
+          
 
         }
     }

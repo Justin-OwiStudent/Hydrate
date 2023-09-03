@@ -23,6 +23,8 @@ struct AuthenticationView: View {
     @State private var LoginAlert = false
     @State private var SignUpAlert = false
     
+    @State private var isShowingAlert = false
+    
     
     //login
     func LoginUser(){
@@ -63,10 +65,6 @@ struct AuthenticationView: View {
         
     }
     
-    func getUser() {
-        Auth.auth().currentUser
-    }
-    
 
     
     var body: some View {
@@ -78,20 +76,6 @@ struct AuthenticationView: View {
                 .ignoresSafeArea()
                 .navigationTitle("Log In")
                 .navigationBarBackButtonHidden(true)
-//                .toolbar {
-//                    ToolbarItem(placement: .navigationBarLeading) {
-//                        Button {
-//                            do {
-//                                try Auth.auth().signOut()
-//                            } catch let signOutError as NSError {
-//                                print("Error signing out: %@", signOutError)
-//                            }
-//                        } label: {
-//                            Image(systemName: "pip.exit")
-//                        }
-//
-//                    }
-//                }
             
             VStack{
                 
@@ -123,6 +107,7 @@ struct AuthenticationView: View {
                 
                 Button(action: {
                     SignUpUser()
+                    isShowingAlert.toggle()
                 }) {
                     Text("Create an account")
                         .fontWeight(.bold)
@@ -135,6 +120,7 @@ struct AuthenticationView: View {
                 
                 Button(action: {
                     LoginUser()
+                    
                 }) {
                     Text("Login")
                         .fontWeight(.bold)
@@ -158,47 +144,23 @@ struct AuthenticationView: View {
                 NavigationLink(destination: ManView(), isActive: $showingLoginScreen) {
                     EmptyView()
                 }
-                
-                //                NavigationLink(destination: ManView(), label: {
-                //                                   Text("Main Screen")
-                //                               })
-                //                               .offset(y: 50)
-                
-                //                Image("WhiteLogo")
-                //                    .resizable()
-                //                    .frame(width: 100, height: 100)
-                //                    .aspectRatio(contentMode: .fit)
-                //                    .offset(y: -200)
-                //
-                //                Text("Lets get you back on track!")
-                //                    .offset(y: -50)
-                //                Text("use facial recognition to login")
-                //                    .offset(y: -30)
-                //
-                //                Image("Locked")
-                //                    .resizable()
-                //                    .frame(width: 50, height: 50)
-                //                    .aspectRatio(contentMode: .fit)
-                //                    .offset(y: 30)
-                //
-                //                NavigationLink(destination: ManView(), label: {
-                //                    Text("Main Screen")
-                //                })
-                //                .offset(y: 50)
+            
             }
             
             
         }
+        .alert(isPresented: $isShowingAlert) {
+                    Alert(
+                        title: Text("Signed Up User"),
+                        message: Text("You have successfully signed up"),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
     }
         .navigationBarBackButtonHidden(true)
     
     }
-    
-//    func GoToMain() {
-//        NavigationView{
-//            NavigationLink("GoToMain", destination: ManView())
-//        }
-//    }
+
     
 }
 

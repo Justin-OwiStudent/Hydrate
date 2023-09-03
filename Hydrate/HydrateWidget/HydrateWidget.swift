@@ -1,32 +1,27 @@
-//
-//  HydrateWidget.swift
-//  HydrateWidget
-//
-//  Created by Justin Koster on 2023/09/03.
-//
-
 import WidgetKit
 import SwiftUI
 import Intents
 
-struct Provider: IntentTimelineProvider {
-    func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(date: Date(), configuration: ConfigurationIntent())
+struct Provider: TimelineProvider {
+    func placeholder(in context: Context) -> WaterIntakeEntry {
+        WaterIntakeEntry(date: Date(), waterIntake: 0)
     }
 
-    func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> ()) {
-        let entry = SimpleEntry(date: Date(), configuration: configuration)
+    func getSnapshot(in context: Context, completion: @escaping (WaterIntakeEntry) -> Void) {
+        let entry = WaterIntakeEntry(date: Date(), waterIntake: 0)
         completion(entry)
     }
 
-    func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        var entries: [SimpleEntry] = []
+    func getTimeline(in context: Context, completion: @escaping (Timeline<WaterIntakeEntry>) -> Void) {
+        var entries: [WaterIntakeEntry] = []
 
+//        let waterDataManager = Viewmode
+        let waterIntake = UserDefaults(suiteName: "group.Hydrate")?.double(forKey: "WaterIntakeValue") ?? 0
         // Generate a timeline consisting of five entries an hour apart, starting from the current date.
         let currentDate = Date()
         for hourOffset in 0 ..< 5 {
             let entryDate = Calendar.current.date(byAdding: .hour, value: hourOffset, to: currentDate)!
-            let entry = SimpleEntry(date: entryDate, configuration: configuration)
+            let entry = WaterIntakeEntry(date: entryDate, waterIntake: Int(waterIntake)) // Replace with the actual water intake value
             entries.append(entry)
         }
 
@@ -35,34 +30,45 @@ struct Provider: IntentTimelineProvider {
     }
 }
 
-struct SimpleEntry: TimelineEntry {
+
+
+struct WaterIntakeEntry: TimelineEntry {
     let date: Date
-    let configuration: ConfigurationIntent
+    let waterIntake: Int
 }
 
 struct HydrateWidgetEntryView : View {
-    var entry: Provider.Entry
+    var entry: WaterIntakeEntry
 
     var body: some View {
-        Text(entry.date, style: .time)
+        VStack {
+            Text("Water Intake")
+                .font(.headline)
+            Text("\(entry.waterIntake) mL")
+                .font(.title)
+        }
+        .padding()
     }
 }
 
 struct HydrateWidget: Widget {
-    let kind: String = "HydrateWidget"
+    private let kind: String = "WaterIntakeWidget"
 
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        StaticConfiguration(kind: kind, provider: Provider()) { entry in
             HydrateWidgetEntryView(entry: entry)
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("Water Intake Widget")
+        .description("Displays your daily water intake.")
+        .supportedFamilies([.systemMedium])
     }
 }
+
 
 struct HydrateWidget_Previews: PreviewProvider {
     static var previews: some View {
-        HydrateWidgetEntryView(entry: SimpleEntry(date: Date(), configuration: ConfigurationIntent()))
+        HydrateWidgetEntryView(entry: WaterIntakeEntry(date: Date(), waterIntake: 0)) // Initialize waterIntake with 0
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+

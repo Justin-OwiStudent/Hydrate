@@ -18,12 +18,7 @@ class CaloriesViewModel: ObservableObject {
     @Published var CalorieList = [Calorie]()
     
     func getAllStepData() {
-        
-//        StepsList.append(HealthActivity(title: "Todays Steps", amount: "2000", image: "", date: ""))
-//        StepsList.append(HealthActivity(title: "Todays Steps", amount: "2000", image: "", date: ""))
-        
-        
-        //get all step activities
+
         db.collection("Calories").getDocuments {snapshot, err in
             
             if err == nil {
