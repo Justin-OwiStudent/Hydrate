@@ -36,7 +36,40 @@
 		D0F5186F2AA4854A008E5D14 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F5186E2AA4854A008E5D14 /* User.swift */; };
 		D0F518712AA486B4008E5D14 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518702AA486B4008E5D14 /* UserViewModel.swift */; };
 		D0F518742AA4994C008E5D14 /* AuthModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518732AA4994C008E5D14 /* AuthModel.swift */; };
+		D0F5187E2AA4BC68008E5D14 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F5187D2AA4BC67008E5D14 /* WidgetKit.framework */; };
+		D0F518802AA4BC68008E5D14 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F5187F2AA4BC68008E5D14 /* SwiftUI.framework */; };
+		D0F518832AA4BC68008E5D14 /* HydrateWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518822AA4BC68008E5D14 /* HydrateWidgetBundle.swift */; };
+		D0F518852AA4BC68008E5D14 /* HydrateWidgetLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518842AA4BC68008E5D14 /* HydrateWidgetLiveActivity.swift */; };
+		D0F518872AA4BC68008E5D14 /* HydrateWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0F518862AA4BC68008E5D14 /* HydrateWidget.swift */; };
+		D0F5188A2AA4BC6C008E5D14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0F518892AA4BC6C008E5D14 /* Assets.xcassets */; };
+		D0F5188C2AA4BC6C008E5D14 /* HydrateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D0F518882AA4BC68008E5D14 /* HydrateWidget.intentdefinition */; };
+		D0F5188D2AA4BC6C008E5D14 /* HydrateWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = D0F518882AA4BC68008E5D14 /* HydrateWidget.intentdefinition */; };
+		D0F518902AA4BC6C008E5D14 /* HydrateWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = D0F5187B2AA4BC67008E5D14 /* HydrateWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D0F5188E2AA4BC6C008E5D14 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D07E93AC2A7B0C8B00102BF6 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D0F5187A2AA4BC67008E5D14;
+			remoteInfo = HydrateWidgetExtension;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D0F518942AA4BC6C008E5D14 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				D0F518902AA4BC6C008E5D14 /* HydrateWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D00F45DD2A95027E006E99C4 /* StepsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsViewModel.swift; sourceTree = "<group>"; };
@@ -67,6 +100,15 @@
 		D0F5186E2AA4854A008E5D14 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		D0F518702AA486B4008E5D14 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		D0F518732AA4994C008E5D14 /* AuthModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModel.swift; sourceTree = "<group>"; };
+		D0F5187B2AA4BC67008E5D14 /* HydrateWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HydrateWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		D0F5187D2AA4BC67008E5D14 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		D0F5187F2AA4BC68008E5D14 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		D0F518822AA4BC68008E5D14 /* HydrateWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrateWidgetBundle.swift; sourceTree = "<group>"; };
+		D0F518842AA4BC68008E5D14 /* HydrateWidgetLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrateWidgetLiveActivity.swift; sourceTree = "<group>"; };
+		D0F518862AA4BC68008E5D14 /* HydrateWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HydrateWidget.swift; sourceTree = "<group>"; };
+		D0F518882AA4BC68008E5D14 /* HydrateWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = HydrateWidget.intentdefinition; sourceTree = "<group>"; };
+		D0F518892AA4BC6C008E5D14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D0F5188B2AA4BC6C008E5D14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +119,15 @@
 				D0F017E22A8E22B800982AC6 /* FirebaseAuth in Frameworks */,
 				D0F017E42A8E22B800982AC6 /* FirebaseFirestore in Frameworks */,
 				D0F017E62A8E22B800982AC6 /* FirebaseFirestoreSwift in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D0F518782AA4BC67008E5D14 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F518802AA4BC68008E5D14 /* SwiftUI.framework in Frameworks */,
+				D0F5187E2AA4BC68008E5D14 /* WidgetKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +151,8 @@
 			isa = PBXGroup;
 			children = (
 				D07E93B62A7B0C8B00102BF6 /* Hydrate */,
+				D0F518812AA4BC68008E5D14 /* HydrateWidget */,
+				D0F5187C2AA4BC67008E5D14 /* Frameworks */,
 				D07E93B52A7B0C8B00102BF6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				D07E93B42A7B0C8B00102BF6 /* Hydrate.app */,
+				D0F5187B2AA4BC67008E5D14 /* HydrateWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -182,6 +236,28 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		D0F5187C2AA4BC67008E5D14 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D0F5187D2AA4BC67008E5D14 /* WidgetKit.framework */,
+				D0F5187F2AA4BC68008E5D14 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D0F518812AA4BC68008E5D14 /* HydrateWidget */ = {
+			isa = PBXGroup;
+			children = (
+				D0F518822AA4BC68008E5D14 /* HydrateWidgetBundle.swift */,
+				D0F518842AA4BC68008E5D14 /* HydrateWidgetLiveActivity.swift */,
+				D0F518862AA4BC68008E5D14 /* HydrateWidget.swift */,
+				D0F518882AA4BC68008E5D14 /* HydrateWidget.intentdefinition */,
+				D0F518892AA4BC6C008E5D14 /* Assets.xcassets */,
+				D0F5188B2AA4BC6C008E5D14 /* Info.plist */,
+			);
+			path = HydrateWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -192,10 +268,12 @@
 				D07E93B02A7B0C8B00102BF6 /* Sources */,
 				D07E93B12A7B0C8B00102BF6 /* Frameworks */,
 				D07E93B22A7B0C8B00102BF6 /* Resources */,
+				D0F518942AA4BC6C008E5D14 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				D0F5188F2AA4BC6C008E5D14 /* PBXTargetDependency */,
 			);
 			name = Hydrate;
 			packageProductDependencies = (
@@ -206,6 +284,23 @@
 			productName = Hydrate;
 			productReference = D07E93B42A7B0C8B00102BF6 /* Hydrate.app */;
 			productType = "com.apple.product-type.application";
+		};
+		D0F5187A2AA4BC67008E5D14 /* HydrateWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D0F518912AA4BC6C008E5D14 /* Build configuration list for PBXNativeTarget "HydrateWidgetExtension" */;
+			buildPhases = (
+				D0F518772AA4BC67008E5D14 /* Sources */,
+				D0F518782AA4BC67008E5D14 /* Frameworks */,
+				D0F518792AA4BC67008E5D14 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HydrateWidgetExtension;
+			productName = HydrateWidgetExtension;
+			productReference = D0F5187B2AA4BC67008E5D14 /* HydrateWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -218,6 +313,9 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					D07E93B32A7B0C8B00102BF6 = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					D0F5187A2AA4BC67008E5D14 = {
 						CreatedOnToolsVersion = 14.3;
 					};
 				};
@@ -239,6 +337,7 @@
 			projectRoot = "";
 			targets = (
 				D07E93B32A7B0C8B00102BF6 /* Hydrate */,
+				D0F5187A2AA4BC67008E5D14 /* HydrateWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -254,6 +353,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0F518792AA4BC67008E5D14 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F5188A2AA4BC6C008E5D14 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -265,6 +372,7 @@
 				D0F518712AA486B4008E5D14 /* UserViewModel.swift in Sources */,
 				D07E93B82A7B0C8B00102BF6 /* HydrateApp.swift in Sources */,
 				D07378F32AA2A74400D51C8B /* WaterModel.swift in Sources */,
+				D0F5188D2AA4BC6C008E5D14 /* HydrateWidget.intentdefinition in Sources */,
 				D0F017DD2A8D5E7F00982AC6 /* HealthActivity.swift in Sources */,
 				D03EE3A82A962B1600B25257 /* StepsModel.swift in Sources */,
 				D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */,
@@ -287,7 +395,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D0F518772AA4BC67008E5D14 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0F5188C2AA4BC6C008E5D14 /* HydrateWidget.intentdefinition in Sources */,
+				D0F518852AA4BC68008E5D14 /* HydrateWidgetLiveActivity.swift in Sources */,
+				D0F518832AA4BC68008E5D14 /* HydrateWidgetBundle.swift in Sources */,
+				D0F518872AA4BC68008E5D14 /* HydrateWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D0F5188F2AA4BC6C008E5D14 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D0F5187A2AA4BC67008E5D14 /* HydrateWidgetExtension */;
+			targetProxy = D0F5188E2AA4BC6C008E5D14 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		D07E93C02A7B0C9100102BF6 /* Debug */ = {
@@ -407,6 +534,7 @@
 		D07E93C32A7B0C9100102BF6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hydrate/Hydrate.entitlements;
@@ -442,6 +570,7 @@
 		D07E93C42A7B0C9100102BF6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Hydrate/Hydrate.entitlements;
@@ -474,6 +603,58 @@
 			};
 			name = Release;
 		};
+		D0F518922AA4BC6C008E5D14 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HydrateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HydrateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Justin.Hydrate.HydrateWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D0F518932AA4BC6C008E5D14 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = HydrateWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = HydrateWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = Justin.Hydrate.HydrateWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -491,6 +672,15 @@
 			buildConfigurations = (
 				D07E93C32A7B0C9100102BF6 /* Debug */,
 				D07E93C42A7B0C9100102BF6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D0F518912AA4BC6C008E5D14 /* Build configuration list for PBXNativeTarget "HydrateWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D0F518922AA4BC6C008E5D14 /* Debug */,
+				D0F518932AA4BC6C008E5D14 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

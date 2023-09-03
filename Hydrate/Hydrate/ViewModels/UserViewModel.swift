@@ -17,7 +17,7 @@ class UserViewModel: ObservableObject {
     private var listener: ListenerRegistration?
     
     
-    @Published var userDetails: User
+//    @Published var userDetails: User
     
     
     func getUserDetails() {
@@ -28,7 +28,7 @@ class UserViewModel: ObservableObject {
                 
                 if let document = document, document.exists {
                     if let userData = try? document.data(as: User.self) {
-                        self.userDetails = userData
+//                        self.userDetails = userData
                         print("The user data should have decoded")
                     } else {
                         print(error?.localizedDescription ?? "Problem with decoding document")

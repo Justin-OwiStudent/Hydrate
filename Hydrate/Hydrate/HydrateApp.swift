@@ -11,6 +11,7 @@ struct HydrateApp: App {
     @ObservedObject var manager: HealthKit = HealthKit()
     @StateObject var userVM = UserViewModel() // Create an instance of UserDataManager
 
+    
 
     @State var isNotAuthenticated = true
 

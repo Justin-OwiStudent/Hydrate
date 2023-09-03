@@ -190,6 +190,9 @@ class ViewModel: ObservableObject {
           }
       }
     }
+
+
+//functon as die dag kla is maak n nuwe entry in die steps collection met die stepcount en die date en user id, dan kan ek filter met die user id en dan weeklikse data wys
     
     
 
