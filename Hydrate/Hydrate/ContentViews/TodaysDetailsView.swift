@@ -10,6 +10,8 @@ import Charts
 
 struct TodaysDetailsView: View {
     
+    @EnvironmentObject var userVM: UserViewModel
+    
     struct Value: Identifiable {
         var id = UUID()
         var day: String
@@ -27,25 +29,7 @@ struct TodaysDetailsView: View {
     ]
     
     var body: some View {
-        
-        
-        
-        NavigationView{
             VStack{
-                
-                
-                
-                //                HStack{
-                //                    Text("Get in Shape")
-                //                        .font(.title)
-                //                        .fontWeight(.bold)
-                //
-                //                    Spacer()
-                //
-                //                    Image(systemName: "flame")
-                //                }
-                //                .padding()
-                
                 ScrollView{
                     HStack{
                         VStack(alignment: .leading, spacing: 6){
@@ -54,7 +38,7 @@ struct TodaysDetailsView: View {
                                 .frame(width: 40, height: 50)
                             
                             HStack{
-                                Text("2000").bold()
+                                Text(String(userVM.userData?.steps ?? 0)).bold()
                                     .font(.title)
                                 
                                 Text("Steps")
@@ -78,7 +62,7 @@ struct TodaysDetailsView: View {
                                 .frame(width: 40, height: 50)
                             
                             HStack{
-                                Text("2000").bold()
+                                Text(String(userVM.userData?.calories ?? 0)).bold()
                                     .font(.title)
                                 
                                 Text("Calories")
@@ -164,7 +148,7 @@ struct TodaysDetailsView: View {
                 
             }
             .background(CustomColor.Background)
-        }
+        
         
         
         
@@ -175,6 +159,9 @@ struct TodaysDetailsView: View {
 
 struct TodaysDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        TodaysDetailsView()
+        NavigationStack {
+            TodaysDetailsView()
+        }
+        
     }
 }

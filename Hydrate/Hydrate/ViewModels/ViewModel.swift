@@ -11,22 +11,8 @@ import FirebaseFirestore
 import HealthKit
 
 class ViewModel: ObservableObject {
-//    @Published var user: User?
-    
-//    let auth = Auth.auth()
     let db = Firestore.firestore()
-//    var uuid: String? {
-//        auth.currentUser?.uid
-//    }
-//    var userIsAuthenticated: Bool {
-//        auth.currentUser != nil
-//    }
-//
-//    var userIsAuthenticatedAndSynced: Bool {
-//        user != nil && userIsAuthenticated
-//    }
-    
-    // Instance of HealthStore
+
     let healthStore = HKHealthStore()
     
     var waterIntake: Double = 0
@@ -47,25 +33,11 @@ class ViewModel: ObservableObject {
                         print("There was an error writing the document: \(err)")
                     } else {
                         print("Document was writed successfully")
-    //                    self.getUserDetails()
                     }
                 }
         }
     
-    func AddWaterIntake(amount: Double, userId: String) {
-            db.collection("users")
-                .document(userId)
-                .setData([
-                    "water": amount
-                ]) { err in
-                    if let err = err {
-                        print("There was an error writing the document: \(err)")
-                    } else {
-                        print("Document was writed successfully")
-    //                    self.getUserDetails()
-                    }
-                }
-        }
+
     
     
     
@@ -75,16 +47,20 @@ class ViewModel: ObservableObject {
                 // This will be all the activity stats
                 let steps = HKQuantityType(.stepCount)
                 let water = HKQuantityType(.dietaryWater)
-    
+                let calories = HKQuantityType(.activeEnergyBurned)
+                    
                 // HealthTypes we want access to
-                let healthTypes: Set = [steps, water]
-    
+                let healthTypes: Set = [steps, water, calories]
+                
+                let writeTypes: Set<HKSampleType> = [HKSampleType.quantityType(forIdentifier: .dietaryWater)!]
+                
                 Task {
                     do {
-                        try await healthStore.requestAuthorization(toShare: [], read: healthTypes)
+                        try await healthStore.requestAuthorization(toShare: writeTypes, read: healthTypes)
     
                         fetchSteps()
                         fetchWater()
+                        fetchCalories()
                     } catch {
                         print("Error fetching data")
                     }
@@ -112,7 +88,7 @@ class ViewModel: ObservableObject {
         }
     
     
-    //maak dan n function wat net die water update(of alles)maar wat n input value het wat by hom sal add soos met die user creation .
+   
         func fetchWater() {
             let water = HKQuantityType(.dietaryWater)
     
@@ -132,7 +108,27 @@ class ViewModel: ObservableObject {
             healthStore.execute(query)
         }
     
-    func fetchDailyCalories() {
+    func saveWaterIntake(amountInMilliliters: Double, date: Date) {
+        let healthStore = HKHealthStore()
+
+        // Create a quantity sample for water intake
+        let waterType = HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
+        let waterAmount = HKQuantity(unit: .liter(), doubleValue: amountInMilliliters)
+        let waterSample = HKQuantitySample(type: waterType, quantity: waterAmount, start: date, end: date)
+
+        // Save the water intake data
+        healthStore.save(waterSample) { (success, error) in
+            if success {
+                // Water intake data saved successfully
+                self.updateWaterIntake()
+            } else {
+                // Error occurred while saving data, handle accordingly
+            }
+        }
+    }
+
+    
+    func fetchCalories() {
         let calories = HKQuantityType(.activeEnergyBurned)
         
         let  predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date())
@@ -164,6 +160,27 @@ class ViewModel: ObservableObject {
 //        print("--------------\(stepsCount)")
 //    }
     
+    func updateWaterIntake() {
+          guard let userId = Auth.auth().currentUser?.uid else {
+              print("User is not authenticated.")
+              return
+          }
+  
+          let db = Firestore.firestore()
+          let userRef = db.collection("users").document(userId)
+          print("--------------\(waterIntake)")
+  
+          userRef.updateData([
+              "water": waterIntake,
+              "time": Date()
+          ]) { error in
+              if let error = error {
+                  print("Error updating water document: \(error.localizedDescription)")
+              } else {
+                  print("water document updated successfully.")
+              }
+          }
+      }
     
     
     func updateFirebaseDocument() {

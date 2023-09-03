@@ -16,5 +16,5 @@ struct User: Codable, Identifiable {
     var water: Double
     var steps: Double
     var calories: Double
-    var signUpDate = Date.now
+    
 }

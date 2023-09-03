@@ -9,78 +9,81 @@ import SwiftUI
 import FirebaseAuth
 
 struct WaterView: View {
+    @EnvironmentObject var userVM: UserViewModel
     
     @StateObject var VM = ViewModel()
     
-    @State var amount = ""
-    
-    func addWater(){
-        
-//        VM.AddWaterIntake(amount: self.amount, userId: authResult?.user.uid ?? "" )
-//        VM.createUserInDB(username: self.username, email: self.email, userId: authResult?.user.uid ?? "" )
-    }
-    
+    @State private var amountText = ""
     
     var body: some View {
-        ZStack {
-            CustomColor.Background
-                .ignoresSafeArea()
-                .navigationTitle("Water")
+        ZStack(alignment: .top) {
             
-            ScrollView {
-                VStack(spacing: 20) {
-                    
+            VStack{
+                
+                VStack{
                     VStack{
-                        Text("Are you drinking enough water?")
-                        Text("Water is a vital source to your health, make sure to drink enough daily!")
+                        Image(systemName: "drop.circle")
+                            .resizable()
+                            .foregroundColor(CustomColor.Primary)
+                            .frame(width: 150, height: 150)
+                            .padding()
+                        
+                        Text("Everytime you drink some water, add the amount you drank so we can keep your stats up to date!")
                             .multilineTextAlignment(.center)
+                            .frame(width: 250)
+                            .padding()
                     }
-                    .frame(width: 300, height: 150)
-                    .background(CustomColor.Secondary)
-                    .cornerRadius(10)
+                    .background(.thinMaterial)
+                    .cornerRadius(15)
                     
-                    VStack{
-                        Text("Make sure you let us know that you drank some water")
-                            .multilineTextAlignment(.center)
-                        
-                        VStack{
-                            Text("how much water did you drink ?")
-                            HStack{
-                                TextField("amount", text: $amount)
-                                    .padding()
-                                    .background(.white)
-                                    .frame(width: 250)
-                                    .cornerRadius(15)
-                                    .foregroundColor(.black)
-                                    .padding()
-                            }
-                            
-                            Button("DRINK") {
-                                addWater()
-                            }
-                            .frame(width: 250, height: 50)
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .border(.black, width: 2)
-                            .cornerRadius(10)
-                            
-                        }
-                       
-                        
-                    }
-                    .frame(width: 300, height: 300)
-                    .background(CustomColor.Secondary)
-                    .cornerRadius(10)
+                   
+                    
+                    Text("Today's water intake").bold()
+                        .padding()
+                        .font(.caption)
+                    
+                    
+                    
+                    Text(String(userVM.userData?.water ?? 0) + "ml").bold()
+                        .font(.title)
+                    
                     
                 }
+                
+                TextField("Enter amount in milliliters", text: $amountText)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .keyboardType(.numberPad)
+                
+                Button(action: {
+                    // Parse and save the input amount to HealthKit
+                    if let amount = Double(amountText) {
+                        VM.saveWaterIntake(amountInMilliliters: amount, date: Date())
+                    }
+                }) {
+                    Text("Save Water Intake")
+                        .padding()
+                        .background(.thinMaterial)
+                        .foregroundStyle(.black)
+                        .cornerRadius(15)
+                }
+               
             }
-         
         }
+        .padding()
+        .navigationTitle("Your Water")
+        .background(CustomColor.Background)
+        .ignoresSafeArea()
+        
+        
+        
     }
 }
 
 struct WaterView_Previews: PreviewProvider {
     static var previews: some View {
-        WaterView()
+        NavigationStack{
+            WaterView()
+        }
+        
     }
 }
