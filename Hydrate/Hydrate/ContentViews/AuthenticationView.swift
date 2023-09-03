@@ -14,12 +14,14 @@ struct AuthenticationView: View {
     @State var password = ""
     @State var username = ""
     @State var showingLoginScreen = false
+    @State var uid = ""
     
     @State var errorMessage = ""
     
     @StateObject var VM = ViewModel()
     
-    
+    @State private var LoginAlert = false
+    @State private var SignUpAlert = false
     
     
     //login
@@ -32,7 +34,11 @@ struct AuthenticationView: View {
             }
             if(authResult != nil){
                 print("logged in user" + (authResult?.user.uid ?? ""));
+                _ = authResult?.user.uid
+                
                 showingLoginScreen = true
+                
+                
                     
             }
         }
@@ -49,10 +55,16 @@ struct AuthenticationView: View {
             if(authResult != nil){
                 print("Signed up user" + (authResult?.user.uid ?? ""));
                 VM.createUserInDB(username: self.username, email: self.email, userId: authResult?.user.uid ?? "" )
+                
+                SignUpAlert = true
                
             }
         }
         
+    }
+    
+    func getUser() {
+        Auth.auth().currentUser
     }
     
 
@@ -82,6 +94,7 @@ struct AuthenticationView: View {
 //                }
             
             VStack{
+                
                 TextField("Username", text: $username)
                     .padding()
                     .background(.white)
@@ -118,6 +131,8 @@ struct AuthenticationView: View {
                         .cornerRadius(15)
                 }
                 
+                
+                
                 Button(action: {
                     LoginUser()
                 }) {
@@ -126,6 +141,16 @@ struct AuthenticationView: View {
                         .frame(width: 250, height: 30)
                         .background(.thinMaterial)
                         .cornerRadius(15)
+                }
+                .alert(isPresented: $LoginAlert) {
+                    Alert(title: Text("Logged in!"),
+                          message: Text("Logged in successfully"),
+                          primaryButton: .default(Text("OK")) {
+                              // Code to execute when the OK button is tapped
+                              self.LoginAlert = false // Close the alert
+                          },
+                          secondaryButton: .cancel(Text("Cancel"))
+                    )
                 }
                 
                 

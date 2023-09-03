@@ -164,9 +164,8 @@ struct TodaysDetailsView: View {
                 
             }
             .background(CustomColor.Background)
-            .navigationTitle("Activity")
         }
-        .navigationBarBackButtonHidden(true)
+        
         
         
         

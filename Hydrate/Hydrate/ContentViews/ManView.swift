@@ -10,12 +10,14 @@ import FirebaseCore
 import FirebaseAuth
 
 struct ManView: View {
+//    @EnvironmentObject var userViewModel: UserViewModel
     
     @ObservedObject var manager: HealthKit = HealthKit()
     
     @State private var action: Int? = 0
+    @State private var WelcomeText = false
     
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    //    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
     @State var isNotAuthenticated = true
     
@@ -27,31 +29,27 @@ struct ManView: View {
         GoToDetailView = true
     }
     
+    //    private func fetchCurrentUser() {
+    //        guard let uid = userViewModel.shared.auth.currentUser?.uid else {
+    //            return }
+    //
+    //        userViewModel.shared.firstore.collection
+    //    }
+    
     var body: some View {
         
-        NavigationView{
+        
+        
+        
+        ZStack(alignment: .top) {
+            CustomColor.Background
+                .ignoresSafeArea()
             
-            
-            ZStack {
-                CustomColor.Background
-                    .ignoresSafeArea()
-                
-                VStack{
-                
-                
-//                HStack{
-//                    Text("Activity")
-//                        .font(.title)
-//                        .fontWeight(.bold)
-//
-//                    Spacer()
-//                }
-//                .padding()
-//
+            VStack{
                 HStack {
                     VStack{
                         
-                        Text("Welcome back, Justin")
+                        Text("Welcome back!")
                             .font(.system(size: 20))
                             .padding(10)
                         
@@ -91,10 +89,10 @@ struct ManView: View {
                     }
                 }
                 .padding()
-                    
-                    NavigationLink(destination: TodaysDetailsView(), isActive: $GoToDetailView) {
-                        EmptyView()
-                    }
+                
+                NavigationLink(destination: TodaysDetailsView(), isActive: $GoToDetailView) {
+                    EmptyView()
+                }
                 
                 HStack{
                     VStack{
@@ -143,65 +141,35 @@ struct ManView: View {
                     
                 }
                 .padding()
-            
-            }
-            }
-            .navigationBarBackButtonHidden(true)
-            .navigationTitle("Activity")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    HStack{
-                        Image("WhiteLogo")
-                            .resizable()
-                            .frame(width: 50, height: 50)
-                        
-                        
-
-                      
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        do {
-                            try Auth.auth().signOut()
-                        } catch let signOutError as NSError {
-                            print("Error signing out: %@", signOutError)
-                        }
-                    } label: {
-                        Image(systemName: "pip.exit")
-                    }
-                }
+                
             }
         }
-        
-//        .onAppear{
-//            //check if a valid user logged on
-//            self.authHandler = Auth.auth().addStateDidChangeListener { auth, user in
-//                print("checking auth state")
-//                if(user != nil) {
-//                    isNotAuthenticated = false
-//                    print("currentUser" + (user?.uid ?? ""))
-//                } else {
-//                    print("removing auth state checker...")
-//                    isNotAuthenticated = true
-//                }
-//            }
-//        }
-//        .onDisappear{
-//            //stop listening to auth
-//            Auth.auth().removeStateDidChangeListener(authHandler!)
-//        }
-//        .fullScreenCover(isPresented: $isNotAuthenticated) {
-//            AuthenticationView()
-//        }
-        
+        .navigationTitle("Activity")
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                Image(systemName: "gear")
+                    .font(.headline)
+                
+                
+                
+                
+                
+                
+                
+            }
+        }
     }
+}
     
     
     
     struct ManView_Previews: PreviewProvider {
         static var previews: some View {
-            ManView()
+            NavigationStack{
+                ManView()
+            }
+            
+               
         }
     }
-}
+

@@ -11,8 +11,20 @@ import FirebaseFirestore
 import HealthKit
 
 class ViewModel: ObservableObject {
+//    @Published var user: User?
     
+//    let auth = Auth.auth()
     let db = Firestore.firestore()
+//    var uuid: String? {
+//        auth.currentUser?.uid
+//    }
+//    var userIsAuthenticated: Bool {
+//        auth.currentUser != nil
+//    }
+//
+//    var userIsAuthenticatedAndSynced: Bool {
+//        user != nil && userIsAuthenticated
+//    }
     
     // Instance of HealthStore
     let healthStore = HKHealthStore()
@@ -39,6 +51,22 @@ class ViewModel: ObservableObject {
                     }
                 }
         }
+    
+    func AddWaterIntake(amount: Double, userId: String) {
+            db.collection("users")
+                .document(userId)
+                .setData([
+                    "water": amount
+                ]) { err in
+                    if let err = err {
+                        print("There was an error writing the document: \(err)")
+                    } else {
+                        print("Document was writed successfully")
+    //                    self.getUserDetails()
+                    }
+                }
+        }
+    
     
     
     init() {
@@ -83,6 +111,8 @@ class ViewModel: ObservableObject {
             healthStore.execute(query)
         }
     
+    
+    //maak dan n function wat net die water update(of alles)maar wat n input value het wat by hom sal add soos met die user creation .
         func fetchWater() {
             let water = HKQuantityType(.dietaryWater)
     
@@ -123,6 +153,17 @@ class ViewModel: ObservableObject {
         healthStore.execute(query)
         
     }
+    
+//    func getUserData() {
+//        guard let userId = Auth.auth().currentUser?.uid else {
+//            print("User is not authenticated.")
+//            return
+//        }
+//        let db = Firestore.firestore()
+//        let userRef = db.collection("users").document(userId)
+//        print("--------------\(stepsCount)")
+//    }
+    
     
     
     func updateFirebaseDocument() {

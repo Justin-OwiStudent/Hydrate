@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Hydrate
-//
-//  Created by Justin Koster on 2023/08/03.
-//
-
 import SwiftUI
 
 struct GrowingButton: ButtonStyle {
@@ -28,23 +21,7 @@ struct ContentView: View {
     private let dotAppearance = UIPageControl.appearance()
     
     var body: some View {
-//        TabView{
-//
-//            ManView()
-//                .tabItem{
-//                    Image(systemName: "house")
-//                    Text("Home")
-//                }
-//
-//            TodaysDetailsView()
-//                .tabItem{
-//                    Image(systemName: "gear")
-//                    Text("Home")
-//                }
-//
-//
-//
-//        }
+
 
         NavigationView {
         ZStack {

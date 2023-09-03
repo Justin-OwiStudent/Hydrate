@@ -6,8 +6,21 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct WaterView: View {
+    
+    @StateObject var VM = ViewModel()
+    
+    @State var amount = ""
+    
+    func addWater(){
+        
+//        VM.AddWaterIntake(amount: self.amount, userId: authResult?.user.uid ?? "" )
+//        VM.createUserInDB(username: self.username, email: self.email, userId: authResult?.user.uid ?? "" )
+    }
+    
+    
     var body: some View {
         ZStack {
             CustomColor.Background
@@ -31,13 +44,19 @@ struct WaterView: View {
                             .multilineTextAlignment(.center)
                         
                         VStack{
-                            Text("Your cups")
+                            Text("how much water did you drink ?")
                             HStack{
-                                
+                                TextField("amount", text: $amount)
+                                    .padding()
+                                    .background(.white)
+                                    .frame(width: 250)
+                                    .cornerRadius(15)
+                                    .foregroundColor(.black)
+                                    .padding()
                             }
                             
                             Button("DRINK") {
-                                
+                                addWater()
                             }
                             .frame(width: 250, height: 50)
                             .background(Color.blue)
