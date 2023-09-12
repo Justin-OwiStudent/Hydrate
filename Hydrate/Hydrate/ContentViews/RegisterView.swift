@@ -1,20 +1,18 @@
 //
-//  AuthenticationView.swift
+//  RegisterView.swift
 //  Hydrate
 //
-//  Created by Justin Koster on 2023/08/10.
+//  Created by Justin Koster on 2023/09/12.
 //
 
 import SwiftUI
 import FirebaseAuth
 
-struct AuthenticationView: View {
-    
+struct RegisterView: View {
     @State var email = ""
     @State var password = ""
     @State var username = ""
-    @State var showingLoginScreen = false
-    @State var showingRegister = false
+    @State var ShowingLogin = false
     @State var uid = ""
     
     @State var errorMessage = ""
@@ -28,41 +26,41 @@ struct AuthenticationView: View {
     @State private var isShowingError = false
     
     
-    //login
-    func LoginUser(){
-        Auth.auth().signIn(withEmail: email, password: password) {authResult, error in
-         
+    func SignUpUser(){
+        //check so that emial of password is not nil
+        Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
             if(error != nil) {
-                print(error?.localizedDescription ?? "login error")
+                print(error?.localizedDescription ?? "Signup error")
                 errorMessage = error?.localizedDescription ?? "something went wrong"
                 isShowingError = true
+                
             }
             if(authResult != nil){
-                print("logged in user" + (authResult?.user.uid ?? ""));
-                _ = authResult?.user.uid
+                print("Signed up user" + (authResult?.user.uid ?? ""));
+                VM.createUserInDB(username: self.username, email: self.email, userId: authResult?.user.uid ?? "" )
                 
-                LoginAlert = true
-                showingLoginScreen = true
+                SignUpAlert = true
+                
+               
             }
         }
+        
     }
-    
-  
-    
-
-    
     var body: some View {
-        
-        
-        NavigationView{
         ZStack {
             CustomColor.Background
                 .ignoresSafeArea()
-                .navigationTitle("Log In")
+                .navigationTitle("Register")
                 .navigationBarBackButtonHidden(true)
             
             VStack{
-            
+                
+                TextField("Username", text: $username)
+                    .padding()
+                    .background(.white)
+                    .foregroundColor(.black)
+                    .frame(width: 300)
+                    .cornerRadius(15)
                 
                 TextField("Email", text: $email)
                     .padding()
@@ -83,71 +81,60 @@ struct AuthenticationView: View {
                     .foregroundColor(.red)
                     .multilineTextAlignment(.center)
                 
-               
                 
                 
                 
                 Button(action: {
-                    LoginUser()
+                    SignUpUser()
                 }) {
-                    Text("Login")
+                    Text("Create an account")
                         .fontWeight(.bold)
                         .frame(width: 250, height: 30)
                         .background(.thinMaterial)
                         .cornerRadius(15)
                 }
-                
+                .alert(isPresented: $isShowingAlert) {
+                            Alert(
+                                title: Text("Signed Up User"),
+                                message: Text("You have successfully signed up"),
+                                dismissButton: .default(Text("OK"))
+                            )
+                        }
                 
                 Button(action: {
-                    showingRegister.toggle()
+                    ShowingLogin.toggle()
                 }) {
-                    Text("Create an account")
+                    Text("Already have an account?")
                         .fontWeight(.bold)
                         .frame(width: 250, height: 30)
                         .cornerRadius(15)
                 }
                 
-                
-                
-                NavigationLink(destination: ManView(), isActive: $showingLoginScreen) {
-                    EmptyView()
-                }
-                
-                NavigationLink(destination: RegisterView(), isActive: $showingRegister) {
+            
+                NavigationLink(destination: AuthenticationView(), isActive: $ShowingLogin) {
                     EmptyView()
                 }
             
             }
-            .alert(isPresented: $LoginAlert) {
-                Alert(title: Text("Logged in!"),
-                      message: Text("Logged in successfully"),
-                      primaryButton: .default(Text("OK")) {
-                          // Code to execute when the OK button is tapped
-                          self.LoginAlert = false // Close the alert
-                      },
-                      secondaryButton: .cancel(Text("Cancel"))
-                )
-            }
+            .alert(isPresented: $isShowingError) {
+                        Alert(
+                            title: Text("Sign up error"),
+                            message: Text("An error occured when signing up, please try again later."),
+                            dismissButton: .default(Text("OK"))
+                        )
+                    }
             
             
         }
-        .alert(isPresented: $isShowingError) {
-                    Alert(
-                        title: Text("Error loging in"),
-                        message: Text("An error occured when logging in, please try again later."),
-                        dismissButton: .default(Text("OK"))
-                    )
-                }
+        
     }
-        .navigationBarBackButtonHidden(true)
-    
-    }
-
-    
 }
 
-struct AuthenticationView_Previews: PreviewProvider {
+struct RegisterView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthenticationView()
+        NavigationStack{
+            RegisterView()
+        }
+        
     }
 }

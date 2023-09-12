@@ -22,14 +22,6 @@ class HealthKit: ObservableObject {
     @Published var WaterActivity: [Water] = []
     
     
-//    init(){
-//
-//        //check if we have access
-//      requestAuth()
-//
-//    }
-    
-    
     func requestAuth(completion: @escaping (Bool, Error?) -> Void) {
         if HKHealthStore.isHealthDataAvailable() {
             // Define the health types you want to read
@@ -138,12 +130,6 @@ class HealthKit: ObservableObject {
         healthStore.execute(query)
         
     }
-    
-
-    
-    
-    
-    
 }
 
 

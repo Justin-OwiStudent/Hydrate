@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D01092102AB08EE0003EAFC3 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D010920F2AB08EE0003EAFC3 /* RegisterView.swift */; };
 		D03EE3A82A962B1600B25257 /* StepsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A72A962B1600B25257 /* StepsModel.swift */; };
 		D03EE3AA2A962B5200B25257 /* CarloriesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3A92A962B5200B25257 /* CarloriesModel.swift */; };
 		D03EE3AE2A96B4BE00B25257 /* TodaysDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D010920F2AB08EE0003EAFC3 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		D013BD3C2AA51E1000F08C4F /* HydrateWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HydrateWidgetExtension.entitlements; sourceTree = "<group>"; };
 		D03EE3A72A962B1600B25257 /* StepsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepsModel.swift; sourceTree = "<group>"; };
 		D03EE3A92A962B5200B25257 /* CarloriesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarloriesModel.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 		D00F45DC2A950261006E99C4 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */,
 				D0F518702AA486B4008E5D14 /* UserViewModel.swift */,
 				D0F5186A2AA3E233008E5D14 /* ViewModel.swift */,
 				D09B23C12A8D10610034ED51 /* HealthKit.swift */,
@@ -196,6 +199,7 @@
 				D08C18AD2A8417D7004242A7 /* WaterView.swift */,
 				D08C18AB2A8413D0004242A7 /* StepView.swift */,
 				D03EE3AD2A96B4BE00B25257 /* TodaysDetailsView.swift */,
+				D010920F2AB08EE0003EAFC3 /* RegisterView.swift */,
 			);
 			path = ContentViews;
 			sourceTree = "<group>";
@@ -203,7 +207,6 @@
 		D08C18B62A87C06A004242A7 /* ContentModels */ = {
 			isa = PBXGroup;
 			children = (
-				D08C18AF2A84DB93004242A7 /* OnboardingModel.swift */,
 				D0F017E82A8E521200982AC6 /* BioAuthView.swift */,
 				D0F017EA2A8E537500982AC6 /* BioAuthManager.swift */,
 			);
@@ -372,6 +375,7 @@
 				D09B23C22A8D10610034ED51 /* HealthKit.swift in Sources */,
 				D07E93C62A7B0CD100102BF6 /* SplashScreenView.swift in Sources */,
 				D08C18AC2A8413D0004242A7 /* StepView.swift in Sources */,
+				D01092102AB08EE0003EAFC3 /* RegisterView.swift in Sources */,
 				D08C18B22A84DCA9004242A7 /* OnboardView.swift in Sources */,
 				D0F5186B2AA3E233008E5D14 /* ViewModel.swift in Sources */,
 				D08C18B42A84E734004242A7 /* AuthenticationView.swift in Sources */,

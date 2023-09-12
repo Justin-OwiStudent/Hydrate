@@ -21,8 +21,6 @@ class ViewModel: ObservableObject {
     
 //    UserDefaults(suiteName: "group.Hydrate")?.set(waterIntakeValue, forKey: "WaterIntakeValue")
 
-
-    
     func createUserInDB(username: String, email: String, userId: String) {
             db.collection("users")
                 .document(userId)
