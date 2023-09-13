@@ -76,10 +76,10 @@ struct RegisterView: View {
                     .cornerRadius(15)
                     .foregroundColor(.black)
                 
-                Text(errorMessage)
-                    .padding()
-                    .foregroundColor(.red)
-                    .multilineTextAlignment(.center)
+//                Text(errorMessage)
+//                    .padding()
+//                    .foregroundColor(.red)
+//                    .multilineTextAlignment(.center)
                 
                 
                 
@@ -119,7 +119,7 @@ struct RegisterView: View {
             .alert(isPresented: $isShowingError) {
                         Alert(
                             title: Text("Sign up error"),
-                            message: Text("An error occured when signing up, please try again later."),
+                            message: Text(errorMessage),
                             dismissButton: .default(Text("OK"))
                         )
                     }

@@ -78,10 +78,10 @@ struct AuthenticationView: View {
                     .cornerRadius(15)
                     .foregroundColor(.black)
                 
-                Text(errorMessage)
-                    .padding()
-                    .foregroundColor(.red)
-                    .multilineTextAlignment(.center)
+//                Text(errorMessage)
+//                    .padding()
+//                    .foregroundColor(.red)
+//                    .multilineTextAlignment(.center)
                 
                
                 
@@ -134,7 +134,7 @@ struct AuthenticationView: View {
         .alert(isPresented: $isShowingError) {
                     Alert(
                         title: Text("Error loging in"),
-                        message: Text("An error occured when logging in, please try again later."),
+                        message: Text(errorMessage),
                         dismissButton: .default(Text("OK"))
                     )
                 }
