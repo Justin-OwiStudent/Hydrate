@@ -6,27 +6,10 @@
 //
 
 import SwiftUI
-//import Charts
 
 struct TodaysDetailsView: View {
     
     @EnvironmentObject var userVM: UserViewModel
-    
-    struct Value: Identifiable {
-        var id = UUID()
-        var day: String
-        var steps: Double
-    }
-    
-    let data = [
-        Value(day: "Monday", steps: 200),
-        Value(day: "Teusday", steps: 96),
-        Value(day: "Wednesday", steps: 96),
-        Value(day: "Thursday", steps: 96),
-        Value(day: "Friday", steps: 96),
-        Value(day: "Saturday", steps: 96),
-        Value(day: "Sunday", steps: 96),
-    ]
     
     var body: some View {
             VStack{

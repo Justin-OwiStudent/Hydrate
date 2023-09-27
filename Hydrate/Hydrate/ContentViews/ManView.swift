@@ -23,6 +23,8 @@ struct ManView: View {
     
     @State private var isShowingAlert = false
     
+    @State private var HasSignedOut = false
+    
     var body: some View {
         ZStack(alignment: .top) {
             CustomColor.Background
@@ -152,16 +154,7 @@ struct ManView: View {
                     .background(.white)
                     .cornerRadius(15)
                 }
-               
-                
-               
-                
-              
-                
-               
-                
             }
-            
             .alert(isPresented: $isShowingAlert) {
                         Alert(
                             title: Text("Signed Out"),
@@ -182,18 +175,22 @@ struct ManView: View {
             }
            
             ToolbarItem(placement: .navigationBarTrailing){
-//                Image(systemName: "gear")
-//                    .font(.headline)
                 Button(action: {
                     Task {
                         await userVM.signOut()
                     }
                     isShowingAlert.toggle()
+                    HasSignedOut.toggle()
                 }) {
                     Image(systemName: "arrowshape.turn.up.backward")
                         .font(.headline)
                         
                 }
+                
+                NavigationLink(destination: AuthenticationView(), isActive: $HasSignedOut) {
+                    EmptyView()
+                }
+
             }
         }
         .onAppear {
