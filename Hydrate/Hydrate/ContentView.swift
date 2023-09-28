@@ -14,6 +14,7 @@ struct GrowingButton: ButtonStyle {
 }
 
 struct ContentView: View {
+    @AppStorage("isOnboardingFinished") var isOnboardingFinished: Bool = false
     @State private var showSplash = true
     @State private var pageIndex = 0
     
@@ -32,46 +33,52 @@ struct ContentView: View {
                     .transition(.opacity)
                     .animation(.easeOut(duration: 1.5))
             } else {
-                TabView(selection: $pageIndex){
-                    ForEach(pages) { page in
-                        VStack{
-                            Spacer()
-                            OnboardView(page: page)
-                            Spacer()
-                            if page == pages.last {
+                if isOnboardingFinished {
+                    AuthenticationView()
+                } else {
+                    TabView(selection: $pageIndex){
+                        ForEach(pages) { page in
+                            VStack{
+                                Spacer()
+                                
+                                OnboardView(page: page)
+                                
+                                Spacer()
+                                
+                                if page == pages.last {
+                                    NavigationLink {
+                                        AuthenticationView()
+                                    } label: {
+                                        Text("Sign up")
+                                            .padding()
+                                            .background(.thinMaterial)
+                                            .foregroundStyle(.black)
+                                            .cornerRadius(15)
+                                    }.simultaneousGesture(TapGesture().onEnded{
+                                        isOnboardingFinished = true
+                                    })
 
-                               
-                                NavigationLink(destination: AuthenticationView(), label: {
-                                    Text("Sign up")
-                                        .padding()
-                                        .background(.thinMaterial)
-                                        .foregroundStyle(.black)
-                                        .cornerRadius(15)
-                                })
-                                .offset(y: -70)
 
+                                } else {
+                                    Button("Next", action: incrementPage)
+                                        .buttonStyle(GrowingButton())
 
-
-                            } else {
-
-
-                                Button("Next", action: incrementPage)
-                                    .buttonStyle(GrowingButton())
-
+                                }
+                                Spacer()
                             }
-                            Spacer()
+                            .tag(page.tag)
                         }
-                        .tag(page.tag)
+                    }
+                    .animation(.easeOut, value: pageIndex)
+                    .tabViewStyle(.page)
+                    .indexViewStyle(.page(backgroundDisplayMode: .interactive))
+                    .onAppear{
+                        dotAppearance.currentPageIndicatorTintColor = .systemCyan
+                        dotAppearance.pageIndicatorTintColor = .gray
+
                     }
                 }
-                .animation(.easeOut, value: pageIndex)
-                .tabViewStyle(.page)
-                .indexViewStyle(.page(backgroundDisplayMode: .interactive))
-                .onAppear{
-                    dotAppearance.currentPageIndicatorTintColor = .systemCyan
-                    dotAppearance.pageIndicatorTintColor = .gray
 
-                }
             }
         } //ZStack
         .onAppear {

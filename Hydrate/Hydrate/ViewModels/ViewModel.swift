@@ -89,7 +89,27 @@ class ViewModel: ObservableObject {
             healthStore.execute(query)
         }
     
-    
+        func fetchCalories() {
+            let calories = HKQuantityType(.activeEnergyBurned)
+            
+            let  predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date())
+            
+            let query = HKStatisticsQuery(quantityType: calories, quantitySamplePredicate: predicate) {_, res, err in
+                guard let quantity = res?.sumQuantity(), err == nil else {
+                    print("error fetching todays calories: \(err?.localizedDescription ?? "")")
+                    return
+                }
+                
+                let calorieAmount = quantity.doubleValue(for: .kilocalorie())
+              
+                self.calorieCount = calorieAmount
+                
+            }
+            
+            //execute our query for the functionality to work
+            healthStore.execute(query)
+            
+        }
    
         func fetchWater() {
             let water = HKQuantityType(.dietaryWater)
@@ -110,100 +130,77 @@ class ViewModel: ObservableObject {
             healthStore.execute(query)
         }
     
-    func saveWaterIntake(amountInMilliliters: Double, date: Date) {
-        let healthStore = HKHealthStore()
-
-        // Create a quantity sample for water intake
-        let waterType = HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
-        let waterAmount = HKQuantity(unit: .liter(), doubleValue: amountInMilliliters)
-        let waterSample = HKQuantitySample(type: waterType, quantity: waterAmount, start: date, end: date)
-
-        // Save the water intake data
-        healthStore.save(waterSample) { (success, error) in
-            if success {
-                // Water intake data saved successfully
-                self.updateWaterIntake()
-            } else {
-                // Error occurred while saving data, handle accordingly
-            }
-        }
-    }
-
     
-    
-    func fetchCalories() {
-        let calories = HKQuantityType(.activeEnergyBurned)
-        
-        let  predicate = HKQuery.predicateForSamples(withStart: Calendar.current.startOfDay(for: Date()), end: Date())
-        
-        let query = HKStatisticsQuery(quantityType: calories, quantitySamplePredicate: predicate) {_, res, err in
-            guard let quantity = res?.sumQuantity(), err == nil else {
-                print("error fetching todays calories: \(err?.localizedDescription ?? "")")
-                return
-            }
-            
-            let calorieAmount = quantity.doubleValue(for: .kilocalorie())
-          
-            self.calorieCount = calorieAmount
-            
-        }
-        
-        //execute our query for the functionality to work
-        healthStore.execute(query)
-        
-    }
-    
+        func saveWaterIntake(amountInMilliliters: Double, date: Date) {
+            let healthStore = HKHealthStore()
 
-    
-    func updateWaterIntake() {
-          guard let userId = Auth.auth().currentUser?.uid else {
-              print("User is not authenticated.")
-              return
-          }
-  
-          let db = Firestore.firestore()
-          let userRef = db.collection("users").document(userId)
-          print("--------------\(waterIntake)")
-  
-          userRef.updateData([
-              "water": waterIntake,
-              "time": Date()
-          ]) { error in
-              if let error = error {
-                  print("Error updating water document: \(error.localizedDescription)")
-              } else {
-                  print("water document updated successfully.")
-              }
-          }
-        if let sharedUserDefaults = UserDefaults(suiteName: "group.Hydrate") {
-                    sharedUserDefaults.set(waterIntake, forKey: "WaterIntakeValue")
+            // Create a quantity sample for water intake
+            let waterType = HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
+            let waterAmount = HKQuantity(unit: .liter(), doubleValue: amountInMilliliters)
+            let waterSample = HKQuantitySample(type: waterType, quantity: waterAmount, start: date, end: date)
+
+            // Save the water intake data
+            healthStore.save(waterSample) { (success, error) in
+                if success {
+                    // Water intake data saved successfully
+                    self.updateWaterIntake()
+                    print("water intake updated succesfully")
+                } else {
+                    print("error updating water intake, please try again later")
+                    // Error occurred while saving data, handle accordingly
                 }
-      }
-    
-    
-    func updateFirebaseDocument() {
-          guard let userId = Auth.auth().currentUser?.uid else {
-              print("User is not authenticated.")
-              return
+            }
+        }
+ 
+        func updateWaterIntake() {
+              guard let userId = Auth.auth().currentUser?.uid else {
+                  print("User is not authenticated.")
+                  return
+              }
+      
+              let db = Firestore.firestore()
+              let userRef = db.collection("users").document(userId)
+              print("--------------\(waterIntake)")
+      
+              userRef.updateData([
+                  "water": waterIntake,
+                  "time": Date()
+              ]) { error in
+                  if let error = error {
+                      print("Error updating water document: \(error.localizedDescription)")
+                  } else {
+                      print("water document updated successfully.")
+                  }
+              }
+            if let sharedUserDefaults = UserDefaults(suiteName: "group.Hydrate") {
+                        sharedUserDefaults.set(waterIntake, forKey: "WaterIntakeValue")
+                    }
           }
-  
-          let db = Firestore.firestore()
-          let userRef = db.collection("users").document(userId)
-          print("--------------\(stepsCount)")
-  
-          userRef.updateData([
-              "steps": stepsCount,
-              "water": waterIntake,
-              "calories": calorieCount,
-              "time": Date()
-          ]) { error in
-              if let error = error {
-                  print("Error updating Firebase document: \(error.localizedDescription)")
-              } else {
-                  print("Firebase document updated successfully.")
+    
+    
+        func updateFirebaseDocument() {
+              guard let userId = Auth.auth().currentUser?.uid else {
+                  print("User is not authenticated.")
+                  return
+              }
+      
+              let db = Firestore.firestore()
+              let userRef = db.collection("users").document(userId)
+              print("--------------\(stepsCount)")
+      
+              userRef.updateData([
+                  "steps": stepsCount,
+                  "water": waterIntake,
+                  "calories": calorieCount,
+                  "time": Date()
+              ]) { error in
+                  if let error = error {
+                      print("Error updating Firebase document: \(error.localizedDescription)")
+                  } else {
+                      print("Firebase document updated successfully.")
+                  }
               }
           }
-      }
     }
 
 

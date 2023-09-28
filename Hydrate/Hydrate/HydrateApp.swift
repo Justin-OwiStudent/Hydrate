@@ -9,7 +9,7 @@ import FirebaseFirestore
 @main
 struct HydrateApp: App {
     @ObservedObject var manager: HealthKit = HealthKit()
-    @StateObject var userVM = UserViewModel() // Create an instance of UserDataManager
+    @StateObject var userVM = UserViewModel()
 
     
 

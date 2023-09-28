@@ -14,6 +14,9 @@ struct ManView: View {
     
     @EnvironmentObject var userVM: UserViewModel
     
+    @StateObject var VM = ViewModel()
+    
+    
     @ObservedObject var manager: HealthKit = HealthKit()
     
 
@@ -177,10 +180,11 @@ struct ManView: View {
             ToolbarItem(placement: .navigationBarTrailing){
                 Button(action: {
                     Task {
-                        await userVM.signOut()
+//                        await userVM.signOut()
+                        VM.updateFirebaseDocument()
                     }
-                    isShowingAlert.toggle()
-                    HasSignedOut.toggle()
+//                    isShowingAlert.toggle()
+//                    HasSignedOut.toggle()
                 }) {
                     Image(systemName: "arrowshape.turn.up.backward")
                         .font(.headline)
