@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="ReadmeAssets/WhiteLogo.png" alt="logo" width="400" height="auto" />
+  <img src="ReadmeAssets/WhiteLogo.png" alt="logo" width="200" height="auto" />
   <h1>Hydrate</h1>
   
 </div>
