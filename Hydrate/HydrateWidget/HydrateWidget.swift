@@ -1,6 +1,8 @@
 import WidgetKit
 import SwiftUI
 import Intents
+import WidgetKit
+
 
 struct Provider: TimelineProvider {
     func placeholder(in context: Context) -> WaterIntakeEntry {

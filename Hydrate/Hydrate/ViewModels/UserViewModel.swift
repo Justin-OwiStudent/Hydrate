@@ -5,8 +5,7 @@ import Combine
 
 class UserViewModel: ObservableObject {
     private let db = Firestore.firestore()
-    
-    // @Published properties to make them observable
+   
     @Published var userLoggedIn: Bool = false
     @Published var userData: User?
     
@@ -45,11 +44,11 @@ class UserViewModel: ObservableObject {
     
     func hasUserLoggedInPrev() -> Bool {
         if Auth.auth().currentUser?.uid != nil {
-            // userLoggedIn = true
+             userLoggedIn = true
             print("Logged")
             return true
         } else {
-            // userLoggedIn = false
+             userLoggedIn = false
             print("Not logged")
             return false
         }

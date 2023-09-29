@@ -1,14 +1,10 @@
-//
-//  ViewModel.swift
-//  Hydrate
-//
-//  Created by Justin Koster on 2023/09/02.
-//
 
 import Foundation
 import Firebase
 import FirebaseFirestore
 import HealthKit
+import WidgetKit
+
 
 class ViewModel: ObservableObject {
     let db = Firestore.firestore()
@@ -21,8 +17,10 @@ class ViewModel: ObservableObject {
     
     let userViewModel = UserViewModel()
     
+    private var updateTimer: Timer?
+
     
-//    UserDefaults(suiteName: "group.Hydrate")?.set(waterIntakeValue, forKey: "WaterIntakeValue")
+
 
     func createUserInDB(username: String, email: String, userId: String) {
             db.collection("users")
@@ -47,25 +45,25 @@ class ViewModel: ObservableObject {
     
     
     init() {
-        // Check access to user data
+      
         if HKHealthStore.isHealthDataAvailable() {
-            // This will be all the activity stats
+            
             let steps = HKQuantityType(.stepCount)
             let water = HKQuantityType(.dietaryWater)
             let calories = HKQuantityType(.activeEnergyBurned)
             
-            // HealthTypes we want access to
+           
             let healthTypes: Set = [steps, water, calories]
             
             let writeTypes: Set<HKSampleType> = [HKSampleType.quantityType(forIdentifier: .dietaryWater)!]
             
-            let dispatchGroup = DispatchGroup() // Create a dispatch group
+            let dispatchGroup = DispatchGroup()
             
             Task {
                 do {
                     try await healthStore.requestAuthorization(toShare: writeTypes, read: healthTypes)
                     
-                    // Enter the dispatch group for each data fetch
+                  
                     dispatchGroup.enter()
                     fetchSteps()
                     
@@ -74,20 +72,43 @@ class ViewModel: ObservableObject {
                     
                     dispatchGroup.enter()
                     fetchCalories()
-                    // Wait for all data fetching to complete
+                    
+                    
+                  
                     dispatchGroup.notify(queue: .main) {
-                        // Now you have the initial data, you can update Firebase or perform other actions
-                        // For example, call updateFirebaseDocument() here
+                        
+                        
+//                        self.updateWaterIntake()
+                        
+                        self.startListeningForUpdates()
+                        self.startListeningForHealthKitUpdates()
+                        
+                        self.startObservingHealthKitChanges()
+
                     }
                 } catch {
                     print("Error fetching data")
                 }
             }
         }
-        startListeningForUpdates()
-        startListeningForHealthKitUpdates()
+        
     }
 
+    func startObservingHealthKitChanges() {
+        // Create and configure a timer to periodically check for HealthKit updates
+        updateTimer = Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { [weak self] _ in
+            guard let self = self else {
+                return // Ensure self is non-nil
+            }
+
+            self.fetchSteps()
+            self.fetchWater()
+            self.fetchCalories()
+            
+            // Update Firebase document and other necessary tasks here...
+            self.updateFirebaseDocument()
+        }
+    }
 
     
     func startListeningForUpdates() {
@@ -114,8 +135,9 @@ class ViewModel: ObservableObject {
             }
         }
     }
+    
     func startListeningForHealthKitUpdates() {
-         // Set up observers for HealthKit data changes
+         
          let typesToObserve: Set<HKQuantityType> = [
              HKObjectType.quantityType(forIdentifier: .stepCount)!,
              HKObjectType.quantityType(forIdentifier: .dietaryWater)!,
@@ -131,7 +153,7 @@ class ViewModel: ObservableObject {
                      return
                  }
 
-                 // Handle the HealthKit data change and update Firestore
+           
                  self.updateFirebaseDocument()
                  completionHandler()
              }
@@ -177,11 +199,12 @@ class ViewModel: ObservableObject {
                 
             }
             
-            //execute our query for the functionality to work
+         
             healthStore.execute(query)
             
         }
-   
+    
+    
         func fetchWater() {
             let water = HKQuantityType(.dietaryWater)
     
@@ -202,26 +225,59 @@ class ViewModel: ObservableObject {
         }
     
     
-        func saveWaterIntake(amountInMilliliters: Double, date: Date) {
-            let healthStore = HKHealthStore()
+    
+ 
 
-            // Create a quantity sample for water intake
-            let waterType = HKQuantityType.quantityType(forIdentifier: .dietaryWater)!
-            let waterAmount = HKQuantity(unit: .liter(), doubleValue: amountInMilliliters)
-            let waterSample = HKQuantitySample(type: waterType, quantity: waterAmount, start: date, end: date)
+    
+    
+    func saveWaterIntake(amountInMilliliters: Double, date: Date) {
+        let healthStore = HKHealthStore()
 
-            // Save the water intake data
-            healthStore.save(waterSample) { (success, error) in
-                if success {
-                    // Water intake data saved successfully
-                    self.updateWaterIntake()
-                    print("water intake updated succesfully")
-                } else {
-                    print("error updating water intake, please try again later")
-                    // Error occurred while saving data, handle accordingly
+       
+        guard let waterType = HKQuantityType.quantityType(forIdentifier: .dietaryWater) else {
+            print("Error: HKQuantityType for dietaryWater is not available.")
+            return
+        }
+
+        guard HKHealthStore.isHealthDataAvailable() else {
+            print("Error: HealthKit data is not available on this device.")
+            return
+        }
+
+       
+        healthStore.requestAuthorization(toShare: [waterType], read: nil) { (success, error) in
+            if success {
+                
+                let waterAmount = HKQuantity(unit: .liter(), doubleValue: amountInMilliliters)
+                let waterSample = HKQuantitySample(type: waterType, quantity: waterAmount, start: date, end: date)
+
+               
+                healthStore.save(waterSample) { (saveSuccess, saveError) in
+                    if saveSuccess {
+                        
+                        self.updateWaterIntake()
+                        print("Water intake updated successfully")
+                    } else {
+                        if let saveError = saveError {
+                            print("Error saving water intake: \(saveError.localizedDescription)")
+                        } else {
+                            print("Unknown error saving water intake")
+                        }
+                       
+                    }
                 }
+            } else {
+                if let error = error {
+                    print("Authorization error: \(error.localizedDescription)")
+                } else {
+                    print("Unknown authorization error")
+                }
+           
             }
         }
+    }
+
+
  
         func updateWaterIntake() {
               guard let userId = Auth.auth().currentUser?.uid else {
@@ -246,6 +302,8 @@ class ViewModel: ObservableObject {
             if let sharedUserDefaults = UserDefaults(suiteName: "group.Hydrate") {
                         sharedUserDefaults.set(waterIntake, forKey: "WaterIntakeValue")
                     }
+            WidgetCenter.shared.reloadAllTimelines()
+
           }
     
     
@@ -257,7 +315,7 @@ class ViewModel: ObservableObject {
       
               let db = Firestore.firestore()
               let userRef = db.collection("users").document(userId)
-              print("--------------\(stepsCount)")
+//              print("--------------\(stepsCount)")
       
               userRef.updateData([
                   "steps": stepsCount,

@@ -63,7 +63,6 @@ struct AuthenticationView: View {
             
             VStack{
             
-                
                 TextField("Email", text: $email)
                     .padding()
                     .background(.white)
@@ -77,15 +76,7 @@ struct AuthenticationView: View {
                     .frame(width: 300)
                     .cornerRadius(15)
                     .foregroundColor(.black)
-                
-//                Text(errorMessage)
-//                    .padding()
-//                    .foregroundColor(.red)
-//                    .multilineTextAlignment(.center)
-                
-               
-                
-                
+
                 
                 Button(action: {
                     LoginUser()

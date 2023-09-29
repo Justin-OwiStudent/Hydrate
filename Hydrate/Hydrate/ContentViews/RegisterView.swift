@@ -86,6 +86,7 @@ struct RegisterView: View {
                 
                 Button(action: {
                     SignUpUser()
+                    isShowingAlert = true
                 }) {
                     Text("Create an account")
                         .fontWeight(.bold)

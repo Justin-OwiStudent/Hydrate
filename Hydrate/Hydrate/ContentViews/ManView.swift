@@ -185,35 +185,40 @@ struct ManView: View {
                     .frame(width: 50, height: 50)
                 
             }
+            
+            ToolbarItem(placement: .navigationBarTrailing) {
+                         Button(action: {
+                             Task {
+                                 await userVM.signOut()
+                                 HasSignedOut = true
+                             }
+                         }) {
+                             Image(systemName: "arrowshape.turn.up.backward")
+                                 .font(.headline)
+                                 .foregroundColor(.blue)
+                         }
+                     }
+
+                     // Use the NavigationLink within the ToolbarItem
+                     ToolbarItem(placement: .navigationBarTrailing) {
+                         NavigationLink(destination: AuthenticationView(), isActive: $HasSignedOut) {
+                             EmptyView()
+                         }
+                     }
            
-            ToolbarItem(placement: .navigationBarTrailing){
-                
-                NavigationLink {
-                    AuthenticationView()
-                    
-                } label: {
-                    Image(systemName: "arrowshape.turn.up.backward")
-                        .font(.headline)
-                }
-                
-//                Button(action: {
-//                    Task {
-//                        await userVM.signOut()
+//            ToolbarItem(placement: .navigationBarTrailing){
 //
-//                    }
-//                    isShowingAlert.toggle()
-//                    HasSignedOut = true
-//                }) {
+//                NavigationLink {
+//                    AuthenticationView()
+//
+//                } label: {
 //                    Image(systemName: "arrowshape.turn.up.backward")
 //                        .font(.headline)
-//
 //                }
 //
-//                NavigationLink(destination:  AuthenticationView(), isActive: $HasSignedOut) {
-//                    EmptyView()
-//                }
-
-            }
+//
+//
+//            }
         }
         .onAppear {
             userVM.getUserDetails()

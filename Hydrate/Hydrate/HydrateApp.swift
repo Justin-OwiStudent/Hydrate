@@ -4,11 +4,14 @@ import FirebaseCore
 import FirebaseAuth
 import FirebaseFirestore
 
+//doen n function wat die db update elke keer wat die app toe maak, of logout ?
+
 @main
 struct HydrateApp: App {
     @ObservedObject var manager: HealthKit = HealthKit()
     @StateObject var userVM = UserViewModel()
 
+    
 
     @State var isNotAuthenticated = true
 
@@ -26,6 +29,9 @@ struct HydrateApp: App {
         WindowGroup {
             NavigationStack {
                 ContentView()
+                    .onAppear{
+                        VM.updateFirebaseDocument()
+                    }
             }
             .environmentObject(userVM)
           
