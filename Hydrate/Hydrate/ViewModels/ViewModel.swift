@@ -19,6 +19,9 @@ class ViewModel: ObservableObject {
     var stepsCount: Double = 0
     var calorieCount: Double = 0
     
+    let userViewModel = UserViewModel()
+    
+    
 //    UserDefaults(suiteName: "group.Hydrate")?.set(waterIntakeValue, forKey: "WaterIntakeValue")
 
     func createUserInDB(username: String, email: String, userId: String) {
@@ -44,31 +47,99 @@ class ViewModel: ObservableObject {
     
     
     init() {
-            // Check access to user data
-            if(HKHealthStore.isHealthDataAvailable()) {
-                // This will be all the activity stats
-                let steps = HKQuantityType(.stepCount)
-                let water = HKQuantityType(.dietaryWater)
-                let calories = HKQuantityType(.activeEnergyBurned)
+        // Check access to user data
+        if HKHealthStore.isHealthDataAvailable() {
+            // This will be all the activity stats
+            let steps = HKQuantityType(.stepCount)
+            let water = HKQuantityType(.dietaryWater)
+            let calories = HKQuantityType(.activeEnergyBurned)
+            
+            // HealthTypes we want access to
+            let healthTypes: Set = [steps, water, calories]
+            
+            let writeTypes: Set<HKSampleType> = [HKSampleType.quantityType(forIdentifier: .dietaryWater)!]
+            
+            let dispatchGroup = DispatchGroup() // Create a dispatch group
+            
+            Task {
+                do {
+                    try await healthStore.requestAuthorization(toShare: writeTypes, read: healthTypes)
                     
-                // HealthTypes we want access to
-                let healthTypes: Set = [steps, water, calories]
-                
-                let writeTypes: Set<HKSampleType> = [HKSampleType.quantityType(forIdentifier: .dietaryWater)!]
-                
-                Task {
-                    do {
-                        try await healthStore.requestAuthorization(toShare: writeTypes, read: healthTypes)
-    
-                        fetchSteps()
-                        fetchWater()
-                        fetchCalories()
-                    } catch {
-                        print("Error fetching data")
+                    // Enter the dispatch group for each data fetch
+                    dispatchGroup.enter()
+                    fetchSteps()
+                    
+                    dispatchGroup.enter()
+                    fetchWater()
+                    
+                    dispatchGroup.enter()
+                    fetchCalories()
+                    // Wait for all data fetching to complete
+                    dispatchGroup.notify(queue: .main) {
+                        // Now you have the initial data, you can update Firebase or perform other actions
+                        // For example, call updateFirebaseDocument() here
                     }
+                } catch {
+                    print("Error fetching data")
                 }
             }
         }
+        startListeningForUpdates()
+        startListeningForHealthKitUpdates()
+    }
+
+
+    
+    func startListeningForUpdates() {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("User is not authenticated.")
+            return
+        }
+
+        let db = Firestore.firestore()
+        let userRef = db.collection("users").document(userId)
+
+        userRef.addSnapshotListener { [weak self] documentSnapshot, error in
+            guard let self = self else { return }
+
+            if let error = error {
+                print("Error listening for updates: \(error.localizedDescription)")
+                return
+            }
+
+            if let document = documentSnapshot, document.exists {
+                if let data = try? document.data(as: User.self) {
+                    self.userViewModel.userData = data
+                }
+            }
+        }
+    }
+    func startListeningForHealthKitUpdates() {
+         // Set up observers for HealthKit data changes
+         let typesToObserve: Set<HKQuantityType> = [
+             HKObjectType.quantityType(forIdentifier: .stepCount)!,
+             HKObjectType.quantityType(forIdentifier: .dietaryWater)!,
+             HKObjectType.quantityType(forIdentifier: .activeEnergyBurned)!
+         ]
+
+         typesToObserve.forEach { type in
+             let query = HKObserverQuery(sampleType: type, predicate: nil) { [weak self] query, completionHandler, error in
+                 guard let self = self else { return }
+                 
+                 if let error = error {
+                     print("Error observing HealthKit data changes: \(error.localizedDescription)")
+                     return
+                 }
+
+                 // Handle the HealthKit data change and update Firestore
+                 self.updateFirebaseDocument()
+                 completionHandler()
+             }
+
+             healthStore.execute(query)
+         }
+     }
+
     
         func fetchSteps() {
             let steps = HKQuantityType(.stepCount)
@@ -200,6 +271,7 @@ class ViewModel: ObservableObject {
                       print("Firebase document updated successfully.")
                   }
               }
+         
           }
     }
 

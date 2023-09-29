@@ -16,10 +16,7 @@ struct ManView: View {
     
     @StateObject var VM = ViewModel()
     
-    
     @ObservedObject var manager: HealthKit = HealthKit()
-    
-
     
     @State private var action: Int? = 0
     @State private var WelcomeText = false
@@ -27,6 +24,9 @@ struct ManView: View {
     @State private var isShowingAlert = false
     
     @State private var HasSignedOut = false
+    
+    @State private var shouldAnimate = false
+
     
     var body: some View {
         ZStack(alignment: .top) {
@@ -88,6 +88,9 @@ struct ManView: View {
                         .frame(width: 165, height: 225)
                         .background(.white)
                         .cornerRadius(15)
+                        .scaleEffect(shouldAnimate ? 1.1 : 0.9) // Apply spring animation
+                        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0))
+                                              
                         
                         Spacer()
                         
@@ -109,12 +112,18 @@ struct ManView: View {
                                 .fontWeight(.bold)
                             
                         }
-                        .frame(width: 165, height: 225, alignment: .center)
+                        .frame(width: 165, height: 225)
                         .background(.white)
                         .cornerRadius(15)
+                        .scaleEffect(shouldAnimate ? 1.1 : 0.9) // Apply spring animation
+                        .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0))
+                                  
                         
                     }
                     .padding()
+                    .onAppear {
+                            shouldAnimate = true // Trigger the animation when the view appears
+                        }
                     
                     HStack{
                         Text("Today's Water Intake")
@@ -178,22 +187,31 @@ struct ManView: View {
             }
            
             ToolbarItem(placement: .navigationBarTrailing){
-                Button(action: {
-                    Task {
-//                        await userVM.signOut()
-                        VM.updateFirebaseDocument()
-                    }
-//                    isShowingAlert.toggle()
-//                    HasSignedOut.toggle()
-                }) {
+                
+                NavigationLink {
+                    AuthenticationView()
+                    
+                } label: {
                     Image(systemName: "arrowshape.turn.up.backward")
                         .font(.headline)
-                        
                 }
                 
-                NavigationLink(destination: AuthenticationView(), isActive: $HasSignedOut) {
-                    EmptyView()
-                }
+//                Button(action: {
+//                    Task {
+//                        await userVM.signOut()
+//
+//                    }
+//                    isShowingAlert.toggle()
+//                    HasSignedOut = true
+//                }) {
+//                    Image(systemName: "arrowshape.turn.up.backward")
+//                        .font(.headline)
+//
+//                }
+//
+//                NavigationLink(destination:  AuthenticationView(), isActive: $HasSignedOut) {
+//                    EmptyView()
+//                }
 
             }
         }

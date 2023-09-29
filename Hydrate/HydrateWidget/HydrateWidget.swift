@@ -41,13 +41,19 @@ struct HydrateWidgetEntryView : View {
     var entry: WaterIntakeEntry
 
     var body: some View {
-        VStack {
-            Text("Water Intake")
-                .font(.headline)
-            Text("\(entry.waterIntake) mL")
-                .font(.title)
+        ZStack{
+            Color.blue
+            
+            VStack {
+                Text("Water Intake")
+                    .font(.headline)
+                Text("\(entry.waterIntake) mL")
+                    .font(.title)
+            }
+            .padding()
+            .foregroundColor(.white)
         }
-        .padding()
+        
     }
 }
 
@@ -67,8 +73,13 @@ struct HydrateWidget: Widget {
 
 struct HydrateWidget_Previews: PreviewProvider {
     static var previews: some View {
-        HydrateWidgetEntryView(entry: WaterIntakeEntry(date: Date(), waterIntake: 0)) // Initialize waterIntake with 0
+        // Fetch the actual water intake value from UserDefaults
+        let waterIntake = UserDefaults(suiteName: "group.Hydrate")?.double(forKey: "WaterIntakeValue") ?? 0
+
+        // Initialize the widget with the fetched water intake value
+        return HydrateWidgetEntryView(entry: WaterIntakeEntry(date: Date(), waterIntake: Int(waterIntake)))
             .previewContext(WidgetPreviewContext(family: .systemSmall))
     }
 }
+
 

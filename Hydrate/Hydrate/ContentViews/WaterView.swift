@@ -17,6 +17,11 @@ struct WaterView: View {
     
     @State private var isShowingAlert = false
     
+    @State private var shouldAnimate = false
+    
+    @State private var shouldMoveLeft = false
+
+    
     var body: some View {
         ZStack {
             CustomColor.Background
@@ -27,10 +32,21 @@ struct WaterView: View {
                     
                     VStack{
                         Image(systemName: "drop.circle")
-                            .resizable()
-                            .foregroundColor(CustomColor.Primary)
-                            .frame(width: 150, height: 150)
-                            .padding()
+                                  .resizable()
+                                  .foregroundColor(CustomColor.Primary)
+                                  .frame(width: 150, height: 150)
+                                  .padding()
+                                  .rotationEffect(Angle(degrees: shouldMoveLeft ? 30 : -30)) // Rotate left or right
+                                  .animation(.linear(duration: 1.0)) // Linear animation
+
+                                  // Toggle the shouldRotate state when the animation completes
+                                  .onAppear {
+                                      Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+                                          withAnimation {
+                                              shouldMoveLeft.toggle()
+                                          }
+                                      }
+                                  }
                         
                         Text("Everytime you drink some water, add the amount you drank so we can keep your stats up to date!")
                             .multilineTextAlignment(.center)

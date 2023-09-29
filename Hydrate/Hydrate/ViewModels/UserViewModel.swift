@@ -1,10 +1,12 @@
 import Foundation
 import Firebase
 import FirebaseFirestore
+import Combine 
 
 class UserViewModel: ObservableObject {
     private let db = Firestore.firestore()
     
+    // @Published properties to make them observable
     @Published var userLoggedIn: Bool = false
     @Published var userData: User?
     
@@ -18,7 +20,9 @@ class UserViewModel: ObservableObject {
                 if let data = try? document.data(as: User.self) {
                     print("The user data should have decoded")
                     print("-----------\(data)")
-                    userData = data
+                    
+                    // Update the userData property using self
+                    self.userData = data
                 } else {
                     print(error?.localizedDescription ?? "Problem with decoding document")
                 }
@@ -41,11 +45,11 @@ class UserViewModel: ObservableObject {
     
     func hasUserLoggedInPrev() -> Bool {
         if Auth.auth().currentUser?.uid != nil {
-//            userLoggedIn = true
+            // userLoggedIn = true
             print("Logged")
             return true
         } else {
-//            userLoggedIn = false
+            // userLoggedIn = false
             print("Not logged")
             return false
         }
