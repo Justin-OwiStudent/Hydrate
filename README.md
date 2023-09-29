@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <img src="Assets.xcassets/WhiteLogo.imageset/WhiteLogo.png" alt="logo" width="400" height="auto" />
+  <img src="ReadmeAssets/WhiteLogo.png" alt="logo" width="400" height="auto" />
   <h1>Hydrate</h1>
   
 </div>
@@ -14,10 +14,8 @@
 # :notebook_with_decorative_cover: Table of Contents
 
 - [About the Project](#star2-about-the-project)
-  - [Screenshots](#camera-screenshots)
   - [Tech Stack](#space_invader-tech-stack)
   - [Features](#dart-features)
-  - [Color Reference](#art-color-reference)
   - [Environment Variables](#key-environment-variables)
 - [Getting Started](#toolbox-getting-started)
   - [Prerequisites](#bangbang-prerequisites)
@@ -37,17 +35,7 @@
 
 <!-- Screenshots -->
 
-### :camera: Screenshots
 
-<!--<div align="center"> -->
-<!--  <img src="ReadMeAssets\Mockup_2.png" alt="screenshot" width="600px" />-->
-<!--</div>-->
-<!---->
-<!--<div align="center"> -->
-<!--  <img src="ReadMeAssets\Mockup_1.png" alt="screenshot" width="600px"/>-->
-<!--</div>-->
-
-<!-- TechStack -->
 
 ### :space_invader: Tech Stack
 
@@ -92,30 +80,11 @@
 - Edit Admin information.
 
 
-
-<!--
-- Dashboard to see an overview of information regrading the bank.
-- Client management section to view and search all the relevant details of all clients.
-- Account management section to view and search all the relevant details of all the accounts.
-- Funds page where the total amount on transaction fees are displayed and end month functionality.
--->
-
-<!-- Color Reference -->
-
-### :art: Color Reference
-
-| Color           | Hex                                                              |
-| --------------- | ---------------------------------------------------------------- |
-| Primary Color   | ![#252B63](https://via.placeholder.com/10/252B63?text=+) #252B63 |
-| Secondary Color | ![#23BF81](https://via.placeholder.com/10/23BF81?text=+) #23BF81 |
-| Tertiary Color  | ![#FB3640](https://via.placeholder.com/10/23BF81?text=+) #FB3640 |
-| Active Color    | ![#4B56D2](https://via.placeholder.com/10/4B56D2?text=+) #4B56D2 |
-
 <!-- Env Variables -->
 
 ### :key: Environment Variables
 
-to run this project you need to have Xcode installed
+To run this project you need to have Xcode installed aswell as the accompanied simulator to run the app.
 
 <!-- Getting Started -->
 
@@ -142,7 +111,7 @@ Open project in Xcode and run the application.
 
 ## :eyes: Usage
 
-Hydrate is an application that can be used to track your steps, calories aswell as your water intake amiount.
+Hydrate is an application that can be used to track your steps, calories aswell as your water intake amount.
 
 <!-- Roadmap -->
 
